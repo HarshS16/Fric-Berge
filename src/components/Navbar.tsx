@@ -17,31 +17,38 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-background border-b border-border sticky top-0 z-50">
+    <nav className="bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl lg:text-3xl font-bold tracking-tight">
+          <Link
+            to="/"
+            className="text-2xl lg:text-3xl font-bold tracking-tight"
+          >
             FRIC BERGEN
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm lg:text-base font-medium transition-colors hover:text-accent ${
-                  isActive(link.path) ? "text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Button asChild size="sm" className="ml-4">
-              <Link to="/contact">Contact Us</Link>
-            </Button>
-          </div>
+          <div className="hidden md:flex items-center gap-8 bg-white/10 px-6 py-4 rounded-[32px] border border-white/20">
+  {navLinks.map((link) => (
+    <Link
+      key={link.path}
+      to={link.path}
+      className={`text-sm lg:text-base font-medium transition-colors hover:text-accent ${
+        isActive(link.path)
+          ? "text-foreground"
+          : "text-muted-foreground"
+      }`}
+    >
+      {link.name}
+    </Link>
+  ))}
+  <Link 
+    to="/contact"
+    className="ml-4 bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors"
+  >
+    Store Locator →
+  </Link>
+</div>
 
           {/* Mobile Menu Button */}
           <button
@@ -63,7 +70,9 @@ const Navbar = () => {
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={`text-base font-medium transition-colors hover:text-accent ${
-                    isActive(link.path) ? "text-foreground" : "text-muted-foreground"
+                    isActive(link.path)
+                      ? "text-foreground"
+                      : "text-muted-foreground"
                   }`}
                 >
                   {link.name}
