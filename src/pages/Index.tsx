@@ -32,22 +32,55 @@ const Index = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-items-center">
-          <div className="w-full max-w-sm">
+          <div className="w-full max-w-sm opacity-0 animate-fade-in-left">
             <img
               src="/image 8-1.png"
               alt="Mayonnaise Sachet"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]"
             />
           </div>
-          <div className="w-full max-w-sm justify-self-end">
+          <div className="w-full max-w-sm justify-self-end opacity-0 animate-fade-in-right">
             <img
               src="/image9.svg"
               alt="Coriander Mint"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]"
             />
           </div>
         </div>
       </section>
+
+      {/* Add these keyframes to your global CSS or tailwind.config.js */}
+      <style jsx>{`
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-fade-in-left {
+          animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-in-right {
+          animation: fadeInRight 1s ease-out forwards;
+        }
+      `}</style>
 
       {/* Brand Statement */}
       {/* <section className="bg-black text-white py-16 lg:py-24 relative overflow-hidden">
@@ -116,7 +149,7 @@ const Index = () => {
         </h2>
         <section className="relative bg-gradient-to-br from-white to-gray-50 py-16 lg:py-24 overflow-hidden">
           {/* Decorative background - large chips image */}
-          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 w-[800px] h-[800px] -mr-[200px]">
+          <div className="absolute top-1/2 right-80 transform -translate-y-1/2 w-[800px] h-[800px] -mr-[200px]">
             <img
               src="/nacho.png"
               alt=""

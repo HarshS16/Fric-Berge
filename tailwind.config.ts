@@ -7,15 +7,37 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+      },
       screens: {
-        "2xl": "1400px",
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1400px',
       },
     },
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         oswald: ['Oswald', 'sans-serif'],
+      },
+      keyframes: {
+        fadeInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-50px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeInRight: {
+          '0%': { opacity: '0', transform: 'translateX(50px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'fade-in-left': 'fadeInLeft 1s ease-out forwards',
+        'fade-in-right': 'fadeInRight 1s ease-out forwards',
       },
       colors: {
         border: "hsl(var(--border))",
