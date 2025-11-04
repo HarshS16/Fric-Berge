@@ -26,11 +26,11 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
+      <section className="w-full max-w-[1400px] mx-auto px-4 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-items-center">
           <div className="w-full max-w-sm opacity-0 animate-fade-in-left">
             <img
@@ -201,27 +201,27 @@ const Index = () => {
           <div className="absolute top-1/2 right-0 w-64 h-64 lg:w-96 lg:h-96 bg-accent -mr-20 -mt-32 opacity-30 -z-10 transform rotate-12"></div>
         </div>
       </section>
-     <section className="relative text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden w-full">
   {/* wave image + SAUCES */}
-  <div className="relative h-48 lg:h-64">
+  <div className="relative h-48 lg:h-64 w-full">
     {/* 5× wave images – full-width coverage */}
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-      {[...Array(5)].map((_, i) => (
-        <img
-          key={i}
-          src="/blackwave.png"
-          alt=""
-          className="h-full w-auto max-w-none flex-shrink-0"
-          style={{
-            objectFit: 'contain',
-            transform: 'scale(2.5)',
-            marginLeft: i > 0 ? '45px' : 0 // butt-join copies
-          }}
-        />
-      ))}
-    </div>
-
-    {/* SAUCES text */}
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden w-screen">
+      <div className="flex w-full">
+        {[...Array(5)].map((_, i) => (
+          <img
+            key={i}
+            src="/blackwave.png"
+            alt=""
+            className="h-full w-auto flex-shrink-0"
+            style={{
+              objectFit: 'contain',
+              transform: 'scale(2.5)',
+              marginLeft: i > 0 ? '45px' : 0 // butt-join copies
+            }}
+          />
+        ))}
+      </div>
+    </div>    {/* SAUCES text */}
     <h2 className="relative z-10 text-4xl lg:text-6xl font-bold text-center leading-[12rem] lg:leading-[16rem]">
       SAUCES
     </h2>
@@ -275,25 +275,25 @@ const Index = () => {
             <div className="lg:w-1/2 flex justify-between gap-8">
               {/* Left Column - Recipes and Which meal */}
               <div className="flex flex-col gap-6">
-                {/* Our Recipes Card */}
-                <div className="bg-transparent flex flex-col items-center">
-                  <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3">
-                    <img
-                      src="/salad.jpg"
-                      alt="Our Recipes"
-                      className="w-full h-full object-cover"
+              {/* Our Recipes Card */}
+              <div className="bg-transparent flex flex-col items-center">
+                <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                  <img
+                    src="/salad.jpg"
+                    alt="Our Recipes"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <h3 className="text-lg font-semibold text-center">Our<br />Recipes</h3>
                 </div>
 
-                {/* Which meal is hiding Card */}
-                <div className="bg-transparent flex flex-col items-center">
-                  <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3">
-                    <img
-                      src="/roll.jpg"
-                      alt="Which meal is hiding"
-                      className="w-full h-full object-cover"
+              {/* Which meal is hiding Card */}
+              <div className="bg-transparent flex flex-col items-center">
+                <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                  <img
+                    src="/roll.jpg"
+                    alt="Which meal is hiding"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <h3 className="text-lg font-semibold text-center">Which meal is<br />hiding in your<br />fridge</h3>
@@ -329,12 +329,12 @@ const Index = () => {
               Our<br />Customer<br />Feedbacks
             </h2>
           </div>
-          <div className="relative w-[500px] h-[320px]">
+          <div className="relative w-full max-w-[500px] h-[320px]">
             {/* Main burger image */}
             <img
               src="/delfood.jpg"
               alt="Delicious Burger"
-              className="absolute top-0 right-12 w-[280px] h-[200px] object-cover rounded-[32px] z-20"
+              className="absolute top-0 right-0 w-full max-w-[280px] h-[200px] object-cover rounded-[32px] z-20"
             />
             {/* Background sauce image */}
             <img
