@@ -4,6 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Products = () => {
+  // Hero Section Images with animation states
+  const images = [
+    { src: "/image 29.png", alt: "Pizza & Pasta Sauce", delay: "0" },
+    { src: "/tandoorimayo.png", alt: "Mayonnaise", delay: "100" },
+    { src: "/Mayo.png", alt: "Tandoori Mayonnaise", delay: "200" },
+    { src: "/image 29.png", alt: "White Sauce", delay: "300" },
+  ];
+
   const products = {
     mayonnaise: [
       {
@@ -38,7 +46,7 @@ const Products = () => {
         mrp: "₹10",
         weight: "36g",
         servings: "2",
-        image: "/placeholder-image23.jpg",
+        image: "/image 29.png",
       },
       {
         name: "Tomato Ketchup",
@@ -86,156 +94,62 @@ const Products = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
+      
+      {/* Hero Section - full-bleed image */}
+      <section className="relative bg-black w-full overflow-hidden">
+        <img src="/bg.jpg" alt="Hero" className="w-full h-auto object-cover block" />
 
-      {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">OUR PRODUCTS</h1>
-          <p className="text-lg lg:text-xl max-w-3xl mx-auto text-primary-foreground/90">
-            Discover our range of premium quality sauces, spreads, and dips
-          </p>
+        {/**
+         * Original hero content commented out for reference:
+         *
+         * <div className="absolute top-0 left-0 w-full">
+         *   <img src="/orange.png" alt="" className="w-full object-cover h-[200px]" ... />
+         * </div>
+         *
+         * <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-24">
+         *   <div className="flex flex-col items-start">
+         *     <h1 className="text-6xl lg:text-8xl font-black text-white mb-8">Flavours<br />Gone Wild</h1>
+         *     <div className="relative w-full h-[500px] mt-12"> ... images map ... </div>
+         *   </div>
+         * </div>
+         *
+         * <style jsx>{`@keyframes fadeInSlide { ... }`}</style>
+         */}
+      </section>
+      <section aria-hidden className="bg-white w-full">
+        <div className="h-16 md:h-24 lg:h-32"></div>
+      </section>
+<section className="relative bg-black w-full overflow-hidden">
+        <img src="/bunner2.png" alt="Hero" className="w-full h-auto object-cover block" />
+      </section>
+      <section className="bg-white text-black py-12 lg:py-20 relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <h2 className="text-5xl lg:text-7xl font-black leading-[0.95]">
+                Bold<br />
+                Flavours.<br />
+                Smooth<br />
+                Finish.
+              </h2>
+            </div>
+            <div className="relative w-full h-[380px] lg:h-[480px]">
+              <img src="/nachosauce.png" alt="Sauce bowl" className="absolute right-[-16px] lg:right-[-92px] top-[-50] w-[70%] lg:w-[75%] object-contain" />
+              {/* <img src="/nacho.png" alt="Nacho chip" className="absolute right-8 -top-6 w-[35%] lg:w-[38%] rotate-[10deg]" /> */}
+              <img src="/image 29.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-24px] lg:left-[-100px] bottom-4 w-[108%] lg:w-[96%] object-contain drop-shadow-xl" />
+              <img src="/image8.png" alt="Mayonnaise sachet" className="absolute left-[-24px] lg:left-[-280px] bottom-16 w-[84%] lg:w-[72%] object-contain drop-shadow-md -rotate-6" />
+            </div>
+          </div>
         </div>
       </section>
-
       {/* Products Section */}
-      <section className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-        <Tabs defaultValue="mayonnaise" className="w-full">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12">
-            <TabsTrigger value="mayonnaise">Mayonnaise</TabsTrigger>
-            <TabsTrigger value="sauces">Sauces</TabsTrigger>
-            <TabsTrigger value="spreads">Spreads & Dips</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="mayonnaise">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.mayonnaise.map((product, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardContent className="p-0">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {product.description}
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <p className="font-bold">MRP</p>
-                          <p className="text-muted-foreground">{product.mrp}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Net Wt.</p>
-                          <p className="text-muted-foreground">{product.weight}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Servings</p>
-                          <p className="text-muted-foreground">{product.servings}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="sauces">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.sauces.map((product, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardContent className="p-0">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {product.description}
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <p className="font-bold">MRP</p>
-                          <p className="text-muted-foreground">{product.mrp}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Net Wt.</p>
-                          <p className="text-muted-foreground">{product.weight}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Servings</p>
-                          <p className="text-muted-foreground">{product.servings}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="spreads">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.spreads.map((product, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardContent className="p-0">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {product.description}
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <p className="font-bold">MRP</p>
-                          <p className="text-muted-foreground">{product.mrp}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Net Wt.</p>
-                          <p className="text-muted-foreground">{product.weight}</p>
-                        </div>
-                        <div>
-                          <p className="font-bold">Servings</p>
-                          <p className="text-muted-foreground">{product.servings}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-      </section>
-
       {/* CTA Section */}
-      <section className="bg-accent text-accent-foreground py-12 lg:py-16">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Can't Find What You're Looking For?
-          </h2>
-          <p className="text-lg mb-6">
-            Contact us for custom orders and bulk purchases
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity"
-          >
-            Contact Us
-          </a>
-        </div>
+      <section className="relative bg-black w-full overflow-hidden">
+        <img src="/bunn.png" alt="Promo Banner" className="w-full h-auto object-cover block" />
       </section>
-
+      
       <Footer />
     </div>
   );

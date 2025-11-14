@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+.font-outfit {
+  font-family: "Outfit", sans-serif;
+}
 
 .logo {
   height: 6em;

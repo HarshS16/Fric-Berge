@@ -7,15 +7,51 @@ const OurStory = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">OUR STORY</h1>
-          <p className="text-lg lg:text-xl max-w-3xl mx-auto text-primary-foreground/90">
-            The journey of creating the perfect blend of taste and flavour
-          </p>
+      <section className="bg-white text-black">
+        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+          <div className="flex flex-col items-center">
+            <div className="bg-black text-white rounded-3xl px-8 md:px-12 py-10 md:py-14 shadow-xl w-full max-w-4xl text-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">Our Mission</h2>
+              <div className="mt-2 h-[3px] w-28 md:w-32 bg-white/90 rounded-full mx-auto"></div>
+              <p className="mt-8 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-outfit">
+                We are dedicated to making high-quality, innovative and better-for-you dips and
+                dressings that add joy to every meal.
+              </p>
+            </div>
+
+            <h1 className="mt-16 text-3xl md:text-5xl lg:text-6xl font-black text-center font-outfit">
+              Hard Work Deserves Great Taste
+            </h1>
+          </div>
         </div>
       </section>
+      <section className="w-full flex flex-col items-center justify-center py-16 relative overflow-hidden">
+      
+      {/* Background white space */}
+      <div className="absolute inset-0 bg-white"></div>
 
+      {/* Sauce bowls group */}
+      <img
+        src="/saucebanner.png"
+        alt="Sauce Collection"
+        className="w-[150%] md:w-[110%] lg:w-[90%]
+object-contain  relative z-10 self-start"
+      />
+
+      {/* Mayo bottle */}
+      <img
+        src="/Mayo.png"
+        alt="Mayonnaise Bottle"
+        className="absolute top-12 right-16 w-28 md:w-36 lg:w-40 rotate-[10deg] drop-shadow-xl"
+      />
+
+      {/* Pizza & Pasta Sauce bottle */}
+      <img
+        src="/image 29.png"
+        alt="Pizza & Pasta Sauce"
+        className="absolute top-40 right-4 w-32 md:w-40 lg:w-48 rotate-[-8deg] drop-shadow-xl"
+      />
+    </section>
       {/* Story Content */}
       <section className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
