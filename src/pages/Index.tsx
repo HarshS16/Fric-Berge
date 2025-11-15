@@ -36,14 +36,14 @@ const Index = () => {
             <img
               src="/image 8-1.png"
               alt="Mayonnaise Sachet"
-              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-150 hover:-rotate-6 hover:translate-y-[-30px]"
             />
           </div>
           <div className="w-full max-w-sm justify-self-end opacity-0 animate-fade-in-right">
             <img
               src="/image9.svg"
               alt="Coriander Mint"
-              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-150 hover:rotate-6 hover:translate-y-[-30px]"
             />
           </div>
         </div>
@@ -114,31 +114,50 @@ const Index = () => {
       <section className="bg-white text-black py-16 lg:py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* LEFT TEXT COLUMN */}
             <div className="space-y-6 z-10 relative">
               <div className="inline-block bg-black text-white px-6 py-3 rounded-lg">
                 <p className="text-lg lg:text-xl font-bold tracking-wide uppercase">
                   THE PERFECT BLEND OF
                 </p>
               </div>
+
               <h1 className="text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-oswald">
                 <b>TASTE &</b> <br />
                 <b>FLAVOUR</b>
               </h1>
             </div>
-            <div className="flex justify-center lg:justify-start relative z-10 lg:ml-[-05px] mt-8 lg:mt-12">
-              <div className="relative">
-                <img
-                  src="/sandwich-spread.png"
-                  alt="Sandwich Spread Pouch"
-                  className="w-full max-w-lg lg:max-w-xl h-auto object-contain transform rotate-12 hover:rotate-6 transition-transform duration-500 relative z-20"
-                />
-              </div>
+
+            {/* RIGHT IMAGE + BLACK CIRCLE */}
+            <div className="relative flex justify-center lg:justify-end items-center h-[500px] lg:h-[650px]">
+              {/* Black Circle */}
+              <div
+                className="absolute right-0 top-1/2 -translate-y-1/2
+          w-[500px] h-[500px] lg:w-[650px] lg:h-[650px]
+          bg-black rounded-full
+          -mr-[120px] lg:-mr-[10px] z-0"
+              ></div>
+
+              {/* Sandwich Pouch Image */}
+              <img
+                src="/sandwich-spread.png"
+                alt="Sandwich Spread Pouch"
+                className="
+    absolute 
+    top-1/2 -translate-y-1/2
+    right-[40px] lg:right-[110px]
+    w-[360px] md:w-[420px] lg:w-[500px]   /* increased size */
+    rotate-[10deg]
+    object-contain
+    z-10
+
+    transition-transform duration-500 ease-out
+    hover:scale-140 hover:rotate-[-20deg]   /* hover animation */
+  "
+              />
             </div>
           </div>
         </div>
-
-        {/* Large black circle background */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-[500px] h-[500px] lg:w-[650px] lg:h-[650px] bg-black rounded-full -mr-[150px] lg:-mr-[20px]"></div>
       </section>
 
       {/* Product Range */}
@@ -202,61 +221,96 @@ const Index = () => {
         </div>
       </section>
       <section className="relative text-white overflow-hidden w-full">
-  {/* wave image + SAUCES */}
-  <div className="relative h-48 lg:h-64 w-full">
-    {/* 5× wave images – full-width coverage */}
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden w-screen">
-      <div className="flex w-full">
-        {[...Array(5)].map((_, i) => (
-          <img
-            key={i}
-            src="/blackwave.png"
-            alt=""
-            className="h-full w-auto flex-shrink-0"
-            style={{
-              objectFit: 'contain',
-              transform: 'scale(2.5)',
-              marginLeft: i > 0 ? '45px' : 0 // butt-join copies
-            }}
-          />
-        ))}
-      </div>
-    </div>    {/* SAUCES text */}
-    <h2 className="relative z-10 text-4xl lg:text-6xl font-bold text-center leading-[12rem] lg:leading-[16rem]">
-      SAUCES
-    </h2>
-  </div>
-</section>
+        {/* wave image + SAUCES */}
+        <div className="relative h-48 lg:h-64 w-full">
+          {/* 5× wave images – full-width coverage */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden w-screen">
+            <div className="flex w-full">
+              {[...Array(5)].map((_, i) => (
+                <img
+                  key={i}
+                  src="/blackwave.png"
+                  alt=""
+                  className="h-full w-auto flex-shrink-0"
+                  style={{
+                    objectFit: "contain",
+                    transform: "scale(2.5)",
+                    marginLeft: i > 0 ? "45px" : 0, // butt-join copies
+                  }}
+                />
+              ))}
+            </div>
+          </div>{" "}
+          {/* SAUCES text */}
+          <h2 className="relative z-10 text-4xl lg:text-6xl font-bold text-center leading-[12rem] lg:leading-[16rem]">
+            SAUCES
+          </h2>
+        </div>
+      </section>
 
       {/* Spreads & Dips Section */}
       <section className="bg-white py-16 lg:py-24 relative overflow-hidden">
         <div className="container mx-auto">
           <h2 className="text-6xl lg:text-7xl xl:text-6xl font-black text-center leading-tight tracking-tight font-oswald text-black">
-            SPREADS<br />&amp; DIPS
+            SPREADS
+            <br />
+            &amp; DIPS
           </h2>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="bg-secondary py-12 lg:py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-2xl text-center">
-          <h2 className="text-2xl lg:text-4xl font-bold mb-6">
-            Sign up For Exclusive
-            <br />
-            Deals and Updates
-          </h2>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1"
-            />
-            <Button type="submit" size="lg">
-              Subscribe
-            </Button>
-          </form>
-        </div>
-      </section>
+      <section className="bg-white py-16 lg:py-24 relative overflow-hidden">
+
+  {/* Decorative Left Circle */}
+<div className="absolute left-10 top-1/2 -translate-y-1/2 hidden md:block">
+  <div className="relative w-10 h-10">
+    <div className="absolute inset-0 border-4 border-purple-500 rounded-full"></div>
+    <div className="absolute top-2 left-2 w-8 h-8 bg-black rounded-full"></div>
+  </div>
+</div>
+
+  <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
+    
+    {/* Big Bold Heading */}
+    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-12 leading-tight">
+      Sign up For Exclusive <br /> Deals and Updates
+    </h2>
+
+    {/* Email Input + Subscribe */}
+    <form className="flex flex-col md:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-6">
+
+      {/* Email Box */}
+      <div className="w-full bg-white rounded-full shadow-[0_0_40px_rgba(0,0,0,0.1)] px-6 py-4 flex items-center">
+        <input
+          type="email"
+          placeholder="Enter Your Email Address"
+          className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400"
+        />
+      </div>
+
+      {/* Subscribe Button */}
+      <Button
+        type="submit"
+        size="lg"
+        className="rounded-full px-10 py-6 text-lg font-semibold bg-black hover:bg-gray-900"
+      >
+        SUBSCRIBE
+      </Button>
+    </form>
+
+    {/* Checkbox Row */}
+    <div className="flex items-center justify-center gap-3 text-gray-600 text-sm">
+      <input
+        type="checkbox"
+        className="w-4 h-4 rounded border-gray-400"
+      />
+      <span>I agree to the privacy policy</span>
+    </div>
+  </div>
+
+</section>
+
 
       {/* What We're Up To */}
       <section className="bg-black text-white py-16 lg:py-20 relative overflow-hidden">
@@ -265,8 +319,10 @@ const Index = () => {
             {/* Left side - Title */}
             <div className="lg:w-1/2 mb-12 lg:mb-0">
               <h2 className="text-6xl lg:text-8xl font-black leading-tight tracking-tight">
-                SEE WHAT<br />
-                WE'RE<br />
+                SEE WHAT
+                <br />
+                WE'RE
+                <br />
                 UP TO
               </h2>
             </div>
@@ -275,28 +331,38 @@ const Index = () => {
             <div className="lg:w-1/2 flex justify-between gap-8">
               {/* Left Column - Recipes and Which meal */}
               <div className="flex flex-col gap-6">
-              {/* Our Recipes Card */}
-              <div className="bg-transparent flex flex-col items-center">
-                <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
-                  <img
-                    src="/salad.jpg"
-                    alt="Our Recipes"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                {/* Our Recipes Card */}
+                <div className="bg-transparent flex flex-col items-center">
+                  <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                    <img
+                      src="/salad.jpg"
+                      alt="Our Recipes"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-center">Our<br />Recipes</h3>
+                  <h3 className="text-lg font-semibold text-center">
+                    Our
+                    <br />
+                    Recipes
+                  </h3>
                 </div>
 
-              {/* Which meal is hiding Card */}
-              <div className="bg-transparent flex flex-col items-center">
-                <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
-                  <img
-                    src="/roll.jpg"
-                    alt="Which meal is hiding"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                {/* Which meal is hiding Card */}
+                <div className="bg-transparent flex flex-col items-center">
+                  <div className="relative w-[221px] h-[143px] rounded-[32px] overflow-hidden mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                    <img
+                      src="/roll.jpg"
+                      alt="Which meal is hiding"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-center">Which meal is<br />hiding in your<br />fridge</h3>
+                  <h3 className="text-lg font-semibold text-center">
+                    Which meal is
+                    <br />
+                    hiding in your
+                    <br />
+                    fridge
+                  </h3>
                 </div>
               </div>
 
@@ -311,7 +377,11 @@ const Index = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-center">Delicious Vegan<br />Mayonnaise</h3>
+                  <h3 className="text-lg font-semibold text-center">
+                    Delicious Vegan
+                    <br />
+                    Mayonnaise
+                  </h3>
                 </div>
               </div>
             </div>
@@ -324,9 +394,15 @@ const Index = () => {
         {/* Header with decorative images */}
         <div className="flex justify-between items-start mb-8">
           <div className="space-y-2">
-            <h3 className="text-lg uppercase tracking-wider text-gray-600">TESTIMONIALS & REVIEWS</h3>
+            <h3 className="text-lg uppercase tracking-wider text-gray-600">
+              TESTIMONIALS & REVIEWS
+            </h3>
             <h2 className="text-6xl lg:text-7xl font-black leading-none tracking-tight">
-              Our<br />Customer<br />Feedbacks
+              Our
+              <br />
+              Customer
+              <br />
+              Feedbacks
             </h2>
           </div>
           <div className="relative w-full max-w-[500px] h-[320px]">
@@ -354,8 +430,10 @@ const Index = () => {
         {/* Testimonial Card */}
         <div className="max-w-3xl mx-auto overflow-hidden mt-36">
           <div className="relative">
-            <div className="transition-all duration-500 ease-in-out"
-                 style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}>
+            <div
+              className="transition-all duration-500 ease-in-out"
+              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+            >
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0">
@@ -366,7 +444,9 @@ const Index = () => {
                         </p>
                         <div className="flex items-center justify-center gap-4">
                           <div className="w-12 h-12 bg-black rounded-full"></div>
-                          <h4 className="text-xl font-semibold">{testimonial.author}</h4>
+                          <h4 className="text-xl font-semibold">
+                            {testimonial.author}
+                          </h4>
                         </div>
                       </div>
                     </div>
@@ -384,13 +464,12 @@ const Index = () => {
               key={index}
               onClick={() => setActiveTestimonial(index)}
               className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                index === activeTestimonial ? 'bg-black' : 'bg-gray-300'
+                index === activeTestimonial ? "bg-black" : "bg-gray-300"
               } hover:bg-gray-400`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>
-
       </section>
 
       {/* Quality and Story Section */}
@@ -414,10 +493,12 @@ const Index = () => {
               {/* Premium Quality Card */}
               <div className="bg-white rounded-3xl p-6 shadow-lg">
                 <div className="text-center mb-4">
-                  
-                  <h3 className="text-xl font-bold mt-4 mb-3">Premium Quality</h3>
+                  <h3 className="text-xl font-bold mt-4 mb-3">
+                    Premium Quality
+                  </h3>
                   <p className="text-gray-600 text-sm">
-                    The quality and safety of our products is our top priority. We continue to quest for even greater product quality
+                    The quality and safety of our products is our top priority.
+                    We continue to quest for even greater product quality
                   </p>
                 </div>
               </div>
@@ -425,18 +506,18 @@ const Index = () => {
               {/* Always Fresh Card */}
               <div className="bg-white rounded-3xl p-6 shadow-lg">
                 <div className="text-center mb-4">
-                 
                   <h3 className="text-xl font-bold mt-4 mb-3">Always Fresh</h3>
                   <p className="text-gray-600 text-sm">
-                    Fric Bergen is always committed to 100% fresh, has a certificate of food safety certification
+                    Fric Bergen is always committed to 100% fresh, has a
+                    certificate of food safety certification
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Our Story Button */}
-            <Link 
-              to="/our-story" 
+            <Link
+              to="/our-story"
               className="inline-block bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors"
             >
               OUR STORY

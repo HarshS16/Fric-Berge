@@ -43,7 +43,7 @@ const Navbar = () => {
     </Link>
   ))}
   <Link 
-    to="/contact"
+    to="/contact#store-locator"
     className="ml-4 bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors"
   >
     Store Locator →
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <Button asChild size="sm" className="w-full mt-2">
-                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <Link to="/contact#store-locator" onClick={() => setIsOpen(false)}>
                   Contact Us
                 </Link>
               </Button>
