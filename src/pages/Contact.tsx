@@ -20,7 +20,8 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] overflow-hidden mt-10">
+      <section className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] overflow-hidden mt-10 bg-white">
+
         <img
           src="/saladonplate.jpg"
           alt="Salad on Plate"
@@ -37,7 +38,7 @@ const Contact = () => {
       </section>
 
       {/* Store Locator Section */}
-      <section id="store-locator" className="w-full py-16 text-center">
+      <section id="store-locator" className="w-full py-16 text-center bg-white relative z-20">
         <h1 className="text-3xl md:text-5xl font-black leading-tight mb-12">
           Stock your Favourite <br /> Sauces & Spreads
         </h1>
