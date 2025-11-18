@@ -174,9 +174,10 @@ const Index = () => {
         {/* Full-width collage image as integral part of the section */}
         <div className="w-full">
           <img
-            src="/collagge.png"
+            src="https://i.ibb.co/9HgWpd0V/collagge.png"
             alt="Product Range"
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
       </section>
