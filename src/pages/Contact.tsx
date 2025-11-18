@@ -20,11 +20,11 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] overflow-hidden mt-10 bg-white">
+      <section className="relative w-full h-[300px] md:h-[380px] lg:h-[450px] overflow-hidden  bg-white">
         <img
           src="/saladonplate.jpg"
           alt="Salad on Plate"
-          className="absolute inset-0 w-full h-full object-cover block"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
         />
 
         <div className="absolute left-6 md:left-12 lg:left-16 top-1/2 -translate-y-1/2 z-10">
