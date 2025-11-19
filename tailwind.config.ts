@@ -27,17 +27,45 @@ export default {
       },
       keyframes: {
         fadeInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-50px)' },
+          '0%': { opacity: '0', transform: 'translateX(-150px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
         fadeInRight: {
-          '0%': { opacity: '0', transform: 'translateX(50px)' },
+          '0%': { opacity: '0', transform: 'translateX(150px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(150px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeZoomIn: {
+          '0%': { opacity: '0', transform: 'scale(0.6)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
-        'fade-in-left': 'fadeInLeft 1s ease-out forwards',
-        'fade-in-right': 'fadeInRight 1s ease-out forwards',
+        'fade-in-left': 'fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards',
+        'fade-in-right': 'fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards',
+        'fade-in-up': 'fadeInUp 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards',
+        'fade-zoom-in': 'fadeZoomIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -88,28 +116,6 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

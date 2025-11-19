@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,44 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  // Animation effects for scroll reveal
+  useEffect(() => {
+    // Create observer
+    observer.current = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add a staggered effect for child elements
+          const delay = entry.target.getAttribute('data-delay') || '0';
+          setTimeout(() => {
+            // Choose animation based on data attribute or use default
+            const animationType = entry.target.getAttribute('data-animation') || 'fade-in-up';
+            entry.target.classList.add(`animate-${animationType}`);
+            entry.target.classList.remove('opacity-0');
+          }, parseInt(delay));
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all elements with animation classes
+    const hiddenElements = document.querySelectorAll('.animate-on-scroll');
+    hiddenElements.forEach(el => {
+      if (observer.current) {
+        observer.current.observe(el);
+      }
+    });
+
+    // Cleanup
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, []);
 
   const testimonials = [
     {
@@ -32,18 +70,18 @@ const Index = () => {
       {/* Hero Section */}
       <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 lg:py-20">
         <div className="flex flex-col md:flex-row gap-12 sm:gap-20 md:gap-24 items-center justify-center">
-          <div className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-fade-in-left">
+          <div className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
             <img
               src="/mayosachet.png"
               alt="Mayonnaise Sachet"
-              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-105 sm:hover:scale-110 md:hover:scale-125 lg:hover:scale-150 hover:-rotate-1 sm:hover:-rotate-3 md:hover:-rotate-6 hover:translate-y-[-5px] sm:hover:translate-y-[-10px] md:hover:translate-y-[-20px] lg:hover:translate-y-[-30px]"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 sm:hover:scale-125 md:hover:scale-140 lg:hover:scale-160 hover:-rotate-2 sm:hover:-rotate-4 md:hover:-rotate-8 hover:translate-y-[-10px] sm:hover:translate-y-[-15px] md:hover:translate-y-[-25px] lg:hover:translate-y-[-35px] "
             />
           </div>
-          <div className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-fade-in-right">
+          <div className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
             <img
               src="/image9.svg"
               alt="Coriander Mint"
-              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-105 sm:hover:scale-110 md:hover:scale-125 lg:hover:scale-150 hover:rotate-1 sm:hover:rotate-3 md:hover:rotate-6 hover:translate-y-[-5px] sm:hover:translate-y-[-10px] md:hover:translate-y-[-20px] lg:hover:translate-y-[-30px]"
+              className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-110 sm:hover:scale-125 md:hover:scale-140 lg:hover:scale-160 hover:rotate-2 sm:hover:rotate-4 md:hover:rotate-8 hover:translate-y-[-10px] sm:hover:translate-y-[-15px] md:hover:translate-y-[-25px] lg:hover:translate-y-[-35px] "
             />
           </div>
         </div>
@@ -55,7 +93,7 @@ const Index = () => {
         @keyframes fadeInLeft {
           from {
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(-150px);
           }
           to {
             opacity: 1;
@@ -66,7 +104,7 @@ const Index = () => {
         @keyframes fadeInRight {
           from {
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateX(150px);
           }
           to {
             opacity: 1;
@@ -74,57 +112,63 @@ const Index = () => {
           }
         }
 
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(150px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeZoomIn {
+          from {
+            opacity: 0;
+            transform: scale(0.6);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         .animate-fade-in-left {
-          animation: fadeInLeft 1s ease-out forwards;
+          animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
         }
 
         .animate-fade-in-right {
-          animation: fadeInRight 1s ease-out forwards;
+          animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .animate-fade-zoom-in {
+          animation: fadeZoomIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .animate-on-scroll {
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         `}
       </style>
 
       {/* Brand Statement */}
-      {/* <section className="bg-black text-white py-16 lg:py-24 relative overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-4">
-              <div className="inline-block bg-black text-white px-4 py-2 rounded-full">
-                <p className="text-sm lg:text-base font-medium tracking-wide">
-                  THE PERFECT BLEND OF
-                </p>
-              </div>
-              <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-                TASTE &<br />
-                FLAVOUR
-              </h1>
-            </div>
-            <div className="flex justify-center lg:justify-end relative">
-              <img
-                src="/sandwich-spread.png"
-                alt="Sandwich Spread Pouch"
-                className="w-full max-w-md h-auto object-contain transform rotate-12 hover:rotate-0 transition-transform duration-300"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="absolute inset-0">
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-[800px] h-[800px] bg-black rounded-full -mr-[400px]"></div>
-        </div>
-      </section> */}
-
-      <section className="bg-white text-black py-12 md:py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-white text-black py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* LEFT TEXT COLUMN */}
             <div className="space-y-4 md:space-y-6 z-10 relative">
-              <div className="inline-block bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-lg">
+              <div className="inline-block bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-lg animate-on-scroll opacity-0" data-animation="fade-in-left" data-delay="100">
                 <p className="text-sm md:text-lg lg:text-xl font-bold tracking-wide uppercase">
                   THE PERFECT BLEND OF
                 </p>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-oswald">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-oswald animate-on-scroll opacity-0" data-animation="fade-zoom-in" data-delay="200">
                 <b>TASTE &</b> <br />
                 <b>FLAVOUR</b>
               </h1>
@@ -154,7 +198,7 @@ const Index = () => {
     z-10
 
     transition-transform duration-500 ease-out
-    hover:scale-110 sm:hover:scale-125 md:hover:scale-140 hover:rotate-[-10deg] sm:hover:rotate-[-15deg] md:hover:rotate-[-20deg]   /* hover animation */
+    hover:scale-120 sm:hover:scale-130 md:hover:scale-150 hover:rotate-[-15deg] sm:hover:rotate-[-20deg] md:hover:rotate-[-25deg] 
   "
               />
             </div>
@@ -163,36 +207,37 @@ const Index = () => {
       </section>
 
       {/* Product Range */}
-      <section className="w-full py-12 md:py-16 lg:py-24">
+      <section className="w-full py-12 md:py-16 lg:py-24 animate-on-scroll opacity-0">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black leading-tight font-oswald mb-8 md:mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black leading-tight font-oswald mb-8 md:mb-12 animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
             <b>EXPLORE OUR</b> <br />
             <b>PRODUCT RANGE</b>
           </h2>
         </div>
         
         {/* Full-width collage image as integral part of the section */}
-        <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 animate-on-scroll opacity-0" data-animation="fade-zoom-in" data-delay="200">
           <img
             src="/collage.webp"
             alt="Product Range"
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain transform transition duration-700 hover:scale-105 "
           />
         </div>
       </section>
-      <section className="bg-black text-white w-full">
+
+      <section className="bg-black text-white w-full animate-on-scroll opacity-0" data-animation="fade-in-up">
         {/* Simple black background with SAUCES text */}
         <div className="container mx-auto px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12 lg:py-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-center animate-on-scroll opacity-0" data-animation="fade-zoom-in">
             SAUCES
           </h2>
         </div>
       </section>
 
       {/* Spreads & Dips Section */}
-      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black text-center leading-tight tracking-tight font-oswald text-black">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black text-center leading-tight tracking-tight font-oswald text-black animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
             SPREADS
             <br />
             &amp; DIPS
@@ -201,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         {/* Decorative Left Circle */}
         <div className="absolute left-4 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 hidden md:block">
           <div className="relative w-8 h-8 sm:w-10 sm:h-10">
@@ -212,12 +257,12 @@ const Index = () => {
 
         <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl">
           {/* Big Bold Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-8 md:mb-12 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-8 md:mb-12 leading-tight animate-on-scroll opacity-0" data-animation="fade-zoom-in" data-delay="100">
             Sign up For Exclusive <br /> Deals and Updates
           </h2>
 
           {/* Email Input + Subscribe */}
-          <form className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mb-6">
+          <form className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mb-6 animate-on-scroll opacity-0">
             {/* Email Box */}
             <div className="w-full bg-white rounded-full shadow-[0_0_20px_rgba(0,0,0,0.1)] sm:shadow-[0_0_30px_rgba(0,0,0,0.1)] md:shadow-[0_0_40px_rgba(0,0,0,0.1)] px-4 py-3 sm:px-6 sm:py-4 flex items-center">
               <input
@@ -238,7 +283,7 @@ const Index = () => {
           </form>
 
           {/* Checkbox Row */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 text-gray-600 text-xs sm:text-sm">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-gray-600 text-xs sm:text-sm animate-on-scroll opacity-0">
             <input
               type="checkbox"
               className="w-3 h-3 sm:w-4 sm:h-4 rounded border-gray-400"
@@ -249,12 +294,12 @@ const Index = () => {
       </section>
 
       {/* What We're Up To */}
-      <section className="bg-black text-white py-12 md:py-16 lg:py-20 relative overflow-hidden">
+      <section className="bg-black text-white py-12 md:py-16 lg:py-20 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-start justify-between">
             {/* Left side - Title */}
-            <div className="lg:w-1/2 mb-8 md:mb-12 lg:mb-0 text-center lg:text-left w-full">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tight">
+            <div className="lg:w-1/2 mb-8 md:mb-12 lg:mb-0 text-center lg:text-left w-full animate-on-scroll opacity-0">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tight animate-on-scroll opacity-0" data-animation="fade-in-left" data-delay="100">
                 SEE WHAT
                 <br />
                 WE'RE
@@ -268,15 +313,15 @@ const Index = () => {
               {/* Left Column - Recipes and Which meal */}
               <div className="flex flex-col gap-6 md:gap-8">
                 {/* Our Recipes Card */}
-                <div className="bg-transparent flex flex-col items-center">
-                  <div className="relative w-[150px] sm:w-[180px] md:w-[221px] h-[100px] sm:h-[120px] md:h-[143px] rounded-[20px] sm:rounded-[25px] md:rounded-[32px] overflow-hidden mb-2 sm:mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                <div className="bg-transparent flex flex-col items-center animate-on-scroll opacity-0" data-animation="fade-in-up">
+                  <div className="relative w-[150px] sm:w-[180px] md:w-[221px] h-[100px] sm:h-[120px] md:h-[143px] rounded-[20px] sm:rounded-[25px] md:rounded-[32px] overflow-hidden mb-2 sm:mb-3 group hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2">
                     <img
                       src="/salad.jpg"
                       alt="Our Recipes"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 shadow-lg group-hover:shadow-xl"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-center animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
                     Our
                     <br />
                     Recipes
@@ -284,15 +329,15 @@ const Index = () => {
                 </div>
 
                 {/* Which meal is hiding Card */}
-                <div className="bg-transparent flex flex-col items-center">
-                  <div className="relative w-[150px] sm:w-[180px] md:w-[221px] h-[100px] sm:h-[120px] md:h-[143px] rounded-[20px] sm:rounded-[25px] md:rounded-[32px] overflow-hidden mb-2 sm:mb-3 group hover:shadow-2xl transition-all duration-500 ease-out">
+                <div className="bg-transparent flex flex-col items-center animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+                  <div className="relative w-[150px] sm:w-[180px] md:w-[221px] h-[100px] sm:h-[120px] md:h-[143px] rounded-[20px] sm:rounded-[25px] md:rounded-[32px] overflow-hidden mb-2 sm:mb-3 group hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2">
                     <img
                       src="/roll.jpg"
                       alt="Which meal is hiding"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 shadow-lg group-hover:shadow-xl"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-center animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
                     Which meal is
                     <br />
                     hiding in your
@@ -303,17 +348,17 @@ const Index = () => {
               </div>
 
               {/* Right Column - Mayo Card */}
-              <div className="flex items-end pt-[100px] sm:pt-[150px] md:pt-[200px]">
+              <div className="flex items-end pt-[100px] sm:pt-[150px] md:pt-[200px] animate-on-scroll opacity-0">
                 {/* Delicious Vegan Mayo Card */}
-                <div className="bg-transparent flex flex-col items-center">
+                <div className="bg-transparent flex flex-col items-center animate-on-scroll opacity-0" data-animation="fade-in-right" data-delay="400">
                   <div className="relative w-[150px] sm:w-[180px] md:w-[221px] h-[160px] sm:h-[200px] md:h-[240px] rounded-[20px] sm:rounded-[25px] md:rounded-[32px] overflow-hidden mb-2 sm:mb-3">
                     <img
                       src="/mm.jpg"
                       alt="Delicious Vegan Mayonnaise"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-center animate-on-scroll opacity-0" data-animation="fade-in-right" data-delay="500">
                     Delicious Vegan
                     <br />
                     Mayonnaise
@@ -326,14 +371,14 @@ const Index = () => {
       </section>
 
       {/* Customer Feedback */}
-      <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 animate-on-scroll opacity-0" data-animation="fade-in-up">
         {/* Header with decorative images */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-8 mb-8">
-          <div className="space-y-2">
+          <div className="space-y-2 animate-on-scroll opacity-0">
             <h3 className="text-base sm:text-lg uppercase tracking-wider text-gray-600">
               TESTIMONIALS & REVIEWS
             </h3>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight animate-on-scroll opacity-0" data-animation="fade-in-right" data-delay="100">
               Our
               <br />
               Customer
@@ -341,30 +386,30 @@ const Index = () => {
               Feedbacks
             </h2>
           </div>
-          <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-[200px] sm:h-[250px] md:h-[320px]">
+          <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-[200px] sm:h-[250px] md:h-[320px] animate-on-scroll opacity-0">
             {/* Main burger image */}
             <img
               src="/delfood.jpg"
               alt="Delicious Burger"
-              className="absolute top-0 right-0 w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] h-[120px] sm:h-[150px] md:h-[200px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-20"
+              className="absolute top-0 right-0 w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] h-[120px] sm:h-[150px] md:h-[200px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-20 transform transition duration-500 hover:scale-105 hover:shadow-xl"
             />
             {/* Background sauce image */}
             <img
               src="/food.jpg"
               alt="Sauce Background"
-              className="absolute top-[40px] sm:top-[50px] md:top-[60px] right-[150px] sm:right-[220px] md:right-[390px] w-[140px] sm:w-[180px] md:w-[280px] h-[100px] sm:h-[120px] md:h-[200px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-10"
+              className="absolute top-[40px] sm:top-[50px] md:top-[60px] right-[150px] sm:right-[220px] md:right-[390px] w-[140px] sm:w-[180px] md:w-[280px] h-[100px] sm:h-[120px] md:h-[200px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-10 transform transition duration-500 hover:scale-105 hover:shadow-xl"
             />
             {/* Dip image */}
             <img
               src="/sauce.jpg"
               alt="Dipping Sauce"
-              className="absolute top-[120px] sm:top-[160px] md:top-[240px] right-[20px] sm:right-[40px] md:right-[80px] w-[140px] sm:w-[180px] md:w-[240px] h-[120px] sm:h-[150px] md:h-[210px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-30"
+              className="absolute top-[120px] sm:top-[160px] md:top-[240px] right-[20px] sm:right-[40px] md:right-[80px] w-[140px] sm:w-[180px] md:w-[240px] h-[120px] sm:h-[150px] md:h-[210px] object-cover rounded-[20px] sm:rounded-[25px] md:rounded-[32px] z-30 transform transition duration-500 hover:scale-105 hover:shadow-xl"
             />
           </div>
         </div>
 
         {/* Testimonial Card */}
-        <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto overflow-hidden mt-16 sm:mt-24 md:mt-36">
+        <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto overflow-hidden mt-16 sm:mt-24 md:mt-36 animate-on-scroll opacity-0">
           <div className="relative">
             <div
               className="transition-all duration-500 ease-in-out"
@@ -373,13 +418,13 @@ const Index = () => {
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0">
-                    <div className="bg-white rounded-[30px] sm:rounded-[35px] md:rounded-[40px] p-6 sm:p-8 md:p-12 shadow-lg">
+                    <div className="bg-white rounded-[30px] sm:rounded-[35px] md:rounded-[40px] p-6 sm:p-8 md:p-12 shadow-lg transform transition duration-500 hover:shadow-xl hover:-translate-y-2">
                       <div className="max-w-xs sm:max-w-sm md:max-w-2xl mx-auto text-center">
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8">
                           "{testimonial.text}"
                         </p>
                         <div className="flex items-center justify-center gap-3 sm:gap-4">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full"></div>
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full transform transition duration-500 hover:scale-110"></div>
                           <h4 className="text-lg sm:text-xl font-semibold">
                             {testimonial.author}
                           </h4>
@@ -394,12 +439,12 @@ const Index = () => {
         </div>
 
         {/* Slider dots */}
-        <div className="flex justify-center gap-2 mt-6 md:mt-8">
+        <div className="flex justify-center gap-2 mt-6 md:mt-8 animate-on-scroll opacity-0">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setActiveTestimonial(index)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors duration-300 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${
                 index === activeTestimonial ? "bg-black" : "bg-gray-300"
               } hover:bg-gray-400`}
               aria-label={`Go to testimonial ${index + 1}`}
@@ -409,15 +454,15 @@ const Index = () => {
       </section>
 
       {/* Quality and Story Section */}
-      <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-24">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-24 animate-on-scroll opacity-0" data-animation="fade-in-up">
         <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-16">
           {/* Left side - Image */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 animate-on-scroll opacity-0" data-animation="fade-in-left">
             <div className="relative w-full aspect-[4/3] rounded-[30px] sm:rounded-[40px] md:rounded-[48px] overflow-hidden bg-[#E57373]">
               <img
                 src="/man.jpg"
                 alt="Chef with Products"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transform transition duration-700 hover:scale-105 rounded-[30px] sm:rounded-[40px] md:rounded-[48px]"
               />
             </div>
           </div>
@@ -426,13 +471,13 @@ const Index = () => {
           <div className="lg:w-1/2 space-y-8 md:space-y-12 flex flex-col items-center lg:items-start">
             {/* Quality Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              {/* Premium Quality Card */}
-              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg">
+              {/* Premium Quality Card -->
+              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg animate-on-scroll opacity-0 transform transition duration-500 hover:shadow-xl hover:-translate-y-1" data-animation="fade-in-up">
                 <div className="text-center mb-3 sm:mb-4">
-                  <h3 className="text-lg sm:text-xl font-bold mt-3 sm:mt-4 mb-2 sm:mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold mt-3 sm:mt-4 mb-2 sm:mb-3 animate-on-scroll opacity-0" data-animation="fade-in-up">
                     Premium Quality
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-gray-600 text-xs sm:text-sm animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
                     The quality and safety of our products is our top priority.
                     We continue to quest for even greater product quality
                   </p>
@@ -440,12 +485,12 @@ const Index = () => {
               </div>
 
               {/* Always Fresh Card */}
-              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg">
+              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg animate-on-scroll opacity-0 transform transition duration-500 hover:shadow-xl hover:-translate-y-1" data-animation="fade-in-up">
                 <div className="text-center mb-3 sm:mb-4">
-                  <h3 className="text-lg sm:text-xl font-bold mt-3 sm:mt-4 mb-2 sm:mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold mt-3 sm:mt-4 mb-2 sm:mb-3 animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
                     Always Fresh
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-gray-600 text-xs sm:text-sm animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
                     Fric Bergen is always committed to 100% fresh, has a
                     certificate of food safety certification
                   </p>
@@ -454,12 +499,14 @@ const Index = () => {
             </div>
 
             {/* Our Story Button */}
-            <Link
-              to="/our-story"
-              className="inline-block bg-black text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-gray-800 transition-colors"
-            >
-              OUR STORY
-            </Link>
+            <div className="animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
+              <Link
+                to="/our-story"
+                className="inline-block bg-black text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              >
+                OUR STORY
+              </Link>
+            </div>
           </div>
         </div>
       </section>
