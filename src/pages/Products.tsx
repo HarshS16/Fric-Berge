@@ -138,7 +138,22 @@ const Products = () => {
             <div className="relative w-full h-[280px] md:h-[380px] lg:h-[480px]">
               <img src="/nachosauce.png" alt="Sauce bowl" className="absolute right-[-8px] md:right-[-16px] lg:right-[-92px] top-[-50] w-[60%] md:w-[70%] lg:w-[75%] object-contain" />
               {/* <img src="/nacho.png" alt="Nacho chip" className="absolute right-8 -top-6 w-[35%] lg:w-[38%] rotate-[10deg]" /> */}
-              <img src="/image 29.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-16px] md:left-[-24px] lg:left-[-100px] bottom-4 w-[55%] md:w-[65%] lg:w-[60%] object-contain drop-shadow-xl" />
+              {/* <img src="/pizzapastanew.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-16px] md:left-[-24px] lg:left-[-100px] bottom-4 w-[40%] md:w-[45%] lg:w-[35%] object-contain " /> */}
+              <img
+  src="/pizzapastanew.png"
+  alt="Pizza & Pasta Sauce jar"
+  className="
+    absolute
+    left-auto
+    right-[20px] md:right-[40px] lg:right-[350px]
+    bottom-4
+    w-[40%] md:w-[45%] lg:w-[35%]
+    object-contain
+  "
+/>
+
+
+
               <img src="/image8.png" alt="Mayonnaise sachet" className="absolute left-[-16px] md:left-[-24px] lg:left-[-280px] bottom-8 md:bottom-16 w-[70%] md:w-[84%] lg:w-[72%] object-contain drop-shadow-md -rotate-6" />
             </div>
           </div>
