@@ -99,7 +99,7 @@ const Products = () => {
       
       {/* Hero Section - full-bleed image */}
       <section className="relative bg-black w-full overflow-hidden">
-        <img src="/bg.jpg" alt="Hero" className="w-full h-auto object-cover block" />
+        <img src="/Flavours.webp" alt="Hero" className="w-full h-auto object-cover block" />
 
         {/**
          * Original hero content commented out for reference:
@@ -122,7 +122,7 @@ const Products = () => {
         <div className="h-12 md:h-16 lg:h-24"></div>
       </section>
 <section className="relative bg-black w-full overflow-hidden">
-        <img src="/bunner2.png" alt="Hero" className="w-full h-auto object-cover block" />
+        <img src="/sauces.webp" alt="Hero" className="w-full h-auto object-cover block" />
       </section>
       <section className="bg-white text-black py-8 md:py-12 lg:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
@@ -138,7 +138,7 @@ const Products = () => {
             <div className="relative w-full h-[280px] md:h-[380px] lg:h-[480px]">
               <img src="/nachosauce.png" alt="Sauce bowl" className="absolute right-[-8px] md:right-[-16px] lg:right-[-92px] top-[-50] w-[60%] md:w-[70%] lg:w-[75%] object-contain" />
               {/* <img src="/nacho.png" alt="Nacho chip" className="absolute right-8 -top-6 w-[35%] lg:w-[38%] rotate-[10deg]" /> */}
-              <img src="/image 29.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-16px] md:left-[-24px] lg:left-[-100px] bottom-4 w-[90%] md:w-[108%] lg:w-[96%] object-contain drop-shadow-xl" />
+              <img src="/image 29.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-16px] md:left-[-24px] lg:left-[-100px] bottom-4 w-[55%] md:w-[65%] lg:w-[60%] object-contain drop-shadow-xl" />
               <img src="/image8.png" alt="Mayonnaise sachet" className="absolute left-[-16px] md:left-[-24px] lg:left-[-280px] bottom-8 md:bottom-16 w-[70%] md:w-[84%] lg:w-[72%] object-contain drop-shadow-md -rotate-6" />
             </div>
           </div>
@@ -147,7 +147,7 @@ const Products = () => {
       
       {/* CTA Section */}
       <section className="relative bg-black w-full overflow-hidden">
-        <img src="/bunn.png" alt="Promo Banner" className="w-full h-auto object-cover block" />
+        <img src="/canvasauces.webp" alt="Promo Banner" className="w-full h-auto object-cover block" />
       </section>
       
       <Footer />

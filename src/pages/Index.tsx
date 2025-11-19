@@ -31,7 +31,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 lg:py-20">
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center justify-center">
+        <div className="flex flex-col md:flex-row gap-12 sm:gap-20 md:gap-24 items-center justify-center">
           <div className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-fade-in-left">
             <img
               src="/mayosachet.png"
@@ -174,7 +174,7 @@ const Index = () => {
         {/* Full-width collage image as integral part of the section */}
         <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
           <img
-            src="/collage.png"
+            src="/collage.webp"
             alt="Product Range"
             className="w-full h-auto object-contain"
           />

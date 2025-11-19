@@ -44,7 +44,7 @@ const OurStory = () => {
       </section>
 <section className="w-full py-8 md:py-16">
   <img
-    src="/allsauce.png"
+    src="/saucescollagecanva.webp"
     alt="All Sauces Banner"
     className="w-full h-auto object-cover block"
   />
@@ -126,7 +126,7 @@ const OurStory = () => {
 
       <section className="w-full">
         <img
-          src="/wavybanner.png"
+          src="/canva.webp"
           alt="Wavy Banner"
           className="w-full h-auto object-cover block"
           onError={(e) => { e.currentTarget.src = '/blackwave.png'; }}
