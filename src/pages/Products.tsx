@@ -175,9 +175,9 @@ const Products = () => {
                 Finish.
               </h2>
             </div>
-            <div className="relative w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-[480px]">
+            <div className="relative w-full h-auto lg:h-[480px]">
               {/* Container for the two images that stacks them on smaller screens */}
-              <div className="absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
+              <div className="relative lg:absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
                 {/* Pizza & Pasta Sauce jar - on top on smaller screens, on left on larger screens */}
                 <img
                   src="/ppnew.webp"
@@ -192,20 +192,20 @@ const Products = () => {
                 />
                 {/* Mayonnaise sachet - below on smaller screens, also on left on larger screens */}
                 <img 
-  src="/image8.png" 
-  alt="Mayonnaise sachet" 
-  className="
-    w-[70%] sm:w-[60%] md:w-[50%] lg:w-[40%] 
-    object-contain 
-    drop-shadow-md 
-    -rotate-6
-    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
-    -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-0
-    -translate-x-4 md:-translate-x-12
-    z-20 ml-[-20]
-  " 
-  data-animation="fade-in-right" data-delay="300" 
-/>
+                  src="/image8.png" 
+                  alt="Mayonnaise sachet" 
+                  className="
+                    w-[70%] sm:w-[60%] md:w-[50%] lg:w-[40%] 
+                    object-contain 
+                    drop-shadow-md 
+                    -rotate-6
+                    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
+                    mt-4 lg:-mt-0
+                    lg:-translate-x-12
+                    z-20 lg:ml-[-20]
+                  " 
+                  data-animation="fade-in-right" data-delay="300" 
+                />
 
               </div>
               
