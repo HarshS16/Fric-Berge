@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
@@ -48,6 +48,14 @@ const Navbar = () => {
   >
     Store Locator →
   </Link>
+  <a 
+    href="/brochure.pdf" 
+    download
+    className="ml-4 bg-green-500 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-green-600 transition-colors flex items-center gap-2"
+  >
+    Download Brochure
+    <Download size={16} />
+  </a>
 </div>
 
           {/* Mobile Menu Button */}
@@ -82,6 +90,12 @@ const Navbar = () => {
                 <Link to="/contact#store-locator" onClick={() => setIsOpen(false)}>
                   Contact Us
                 </Link>
+              </Button>
+              <Button asChild size="sm" className="w-full mt-2 bg-green-500 hover:bg-green-600">
+                <a href="/brochure.pdf" download onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2">
+                  Download Brochure
+                  <Download size={16} />
+                </a>
               </Button>
             </div>
           </div>

@@ -75,7 +75,7 @@ const Products = () => {
         description: "Pure vegetarian mayonnaise",
         mrp: "₹25",
         weight: "90g",
-        servings: "5",
+        servings: "2",
         image: "/placeholder-image22.jpg",
       },
     ],
@@ -175,25 +175,55 @@ const Products = () => {
                 Finish.
               </h2>
             </div>
-            <div className="relative w-full h-[280px] md:h-[380px] lg:h-[480px]">
-              <img src="/nachosauce.png" alt="Sauce bowl" className="absolute right-[-8px] md:right-[-16px] lg:right-[-92px] top-[-50] w-[60%] md:w-[70%] lg:w-[75%] object-contain animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-right" data-delay="100" />
-              {/* <img src="/nacho.png" alt="Nacho chip" className="absolute right-8 -top-6 w-[35%] lg:w-[38%] rotate-[10deg]" /> */}
-              {/* <img src="/pizzapastanew.png" alt="Pizza & Pasta Sauce jar" className="absolute left-[-16px] md:left-[-24px] lg:left-[-100px] bottom-4 w-[40%] md:w-[45%] lg:w-[35%] object-contain " /> */}
-              <img
-  src="/pizzapastanew.png"
-  alt="Pizza & Pasta Sauce jar"
+            <div className="relative w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-[480px]">
+              {/* Container for the two images that stacks them on smaller screens */}
+              <div className="absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
+                {/* Pizza & Pasta Sauce jar - on top on smaller screens, on left on larger screens */}
+                <img
+                  src="/ppnew.webp"
+                  alt="Pizza & Pasta Sauce jar"
+                  className="
+                    w-[52%] sm:w-[50%] md:w-[40%] lg:w-[30%]
+                    object-contain
+                    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
+                    z-10
+                  "
+                  data-animation="fade-in-right" data-delay="200"
+                />
+                {/* Mayonnaise sachet - below on smaller screens, also on left on larger screens */}
+                <img 
+  src="/image8.png" 
+  alt="Mayonnaise sachet" 
   className="
-    absolute
-    left-auto
-    right-[20px] md:right-[40px] lg:right-[350px]
-    bottom-4
-    w-[40%] md:w-[45%] lg:w-[35%]
-    object-contain
+    w-[70%] sm:w-[60%] md:w-[50%] lg:w-[40%] 
+    object-contain 
+    drop-shadow-md 
+    -rotate-6
     animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
-  "
-  data-animation="fade-in-right" data-delay="200"
+    -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-0
+    -translate-x-4 md:-translate-x-12
+    z-20 ml-[-20]
+  " 
+  data-animation="fade-in-right" data-delay="300" 
 />
-              <img src="/image8.png" alt="Mayonnaise sachet" className="absolute left-[-16px] md:left-[-24px] lg:left-[-280px] bottom-8 md:bottom-16 w-[70%] md:w-[84%] lg:w-[72%] object-contain drop-shadow-md -rotate-6 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-right" data-delay="300" />
+
+              </div>
+              
+              {/* Sauce bowl - stick to the right margin of the website */}
+              <img 
+                src="/nachosauce.webp" 
+                alt="Sauce bowl" 
+                className="
+                  absolute 
+                  right-0
+                  top-[-20px] sm:top-[-30px] md:top-[-40px] lg:top-[-50px]
+                  w-[50%] sm:w-[55%] md:w-[60%] lg:w-[75%] 
+                  object-contain 
+                  animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
+                  z-0
+                " 
+                data-animation="fade-in-right" data-delay="100" 
+              />
             </div>
           </div>
         </div>
