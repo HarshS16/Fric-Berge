@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,6 +14,7 @@ const Footer = () => {
               <p className="text-sm text-primary-foreground/80 flex-grow">
                 The perfect blend of taste & flavour. Premium sauces, spreads, and dips for every occasion.
               </p>
+              {/* Commenting out social icons as requested
               <div className="flex gap-4 mt-6">
                 <a
                   href="#"
@@ -43,6 +45,7 @@ const Footer = () => {
                   <Linkedin size={20} />
                 </a>
               </div>
+              */}
             </div>
 
             {/* Quick Links */}
@@ -50,30 +53,30 @@ const Footer = () => {
               <h4 className="text-lg font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="/" className="hover:text-accent transition-colors">
+                  <Link to="/" className="hover:text-accent transition-colors">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/our-story" className="hover:text-accent transition-colors">
+                  <Link to="/our-story" className="hover:text-accent transition-colors">
                     Our Story
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-accent transition-colors">
+                  <Link to="/products" className="hover:text-accent transition-colors">
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-accent transition-colors">
+                  <Link to="/contact" className="hover:text-accent transition-colors">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
-                <li>
-                  <a href="/contact" className="hover:text-accent transition-colors">
+                {/* <li>
+                  <Link to="/contact" className="hover:text-accent transition-colors">
                     Store Locator
-                  </a>
-                </li>
+                  </Link>
+                </li> */}
               </ul>
             </div>
 

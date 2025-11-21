@@ -164,70 +164,61 @@ const Products = () => {
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
         <img src="/sauces.webp" alt="Hero" className="w-full h-auto object-cover block" />
       </section>
-      <section className="bg-white text-black py-8 md:py-12 lg:py-20 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[0.95] animate-on-scroll opacity-0" data-animation="fade-in-left">
-                Bold<br />
-                Flavours.<br />
-                Smooth<br />
-                Finish.
-              </h2>
-            </div>
-            <div className="relative w-full h-auto lg:h-[480px]">
-              {/* Container for the two images that stacks them on smaller screens */}
-              <div className="relative lg:absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
-                {/* Pizza & Pasta Sauce jar - on top on smaller screens, on left on larger screens */}
-                <img
-                  src="/ppnew.webp"
-                  alt="Pizza & Pasta Sauce jar"
-                  className="
-                    w-[52%] sm:w-[50%] md:w-[40%] lg:w-[30%]
-                    object-contain
-                    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
-                    z-10
-                  "
-                  data-animation="fade-in-right" data-delay="200"
-                />
-                {/* Mayonnaise sachet - below on smaller screens, also on left on larger screens */}
-                <img 
-                  src="/image8.png" 
-                  alt="Mayonnaise sachet" 
-                  className="
-                    w-[70%] sm:w-[60%] md:w-[50%] lg:w-[40%] 
-                    object-contain 
-                    drop-shadow-md 
-                    -rotate-6
-                    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
-                    mt-4 lg:-mt-0
-                    lg:-translate-x-12
-                    z-20 lg:ml-[-20]
-                  " 
-                  data-animation="fade-in-right" data-delay="300" 
-                />
+      <section className="bg-white text-black py-8 md:py-12 lg:py-20 relative overflow-visible animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
+  <div className="container mx-auto px-4 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="space-y-4">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[0.95] animate-on-scroll opacity-0" data-animation="fade-in-left">
+          Bold<br />
+          Flavours.<br />
+          Smooth<br />
+          Finish.
+        </h2>
+      </div>
 
-              </div>
-              
-              {/* Sauce bowl - stick to the right margin of the website */}
-              <img 
-                src="/nachosauce.webp" 
-                alt="Sauce bowl" 
-                className="
-                  absolute 
-                  right-0
-                  top-[-20px] sm:top-[-30px] md:top-[-40px] lg:top-[-50px]
-                  w-[50%] sm:w-[55%] md:w-[60%] lg:w-[75%] 
-                  object-contain 
-                  animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
-                  z-0
-                " 
-                data-animation="fade-in-right" data-delay="100" 
-              />
-            </div>
-          </div>
+      <div className="relative w-full lg:h-[550px]">
+        {/* Image container */}
+        <div className="relative lg:absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
+
+          {/* JAR IMAGE */}
+          <img
+            src="/ppnew.webp"
+            alt="Pizza & Pasta Sauce jar"
+            className="
+              w-[55%] sm:w-[50%] md:w-[45%] lg:w-[45%]
+              object-contain
+              animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
+              z-10
+              mr-auto
+              -translate-x-6 sm:-translate-x-10 md:-translate-x-16 lg:-translate-x-20
+              mt-6
+            "
+            data-animation="fade-in-right"
+            data-delay="200"
+          />
         </div>
-      </section>
+
+        {/* SAUCE BOWL */}
+        <img
+          src="/sauchnacho.png"
+          alt="Sauce bowl"
+          className="
+            absolute 
+            right-0
+            top-[-10px] sm:top-[-20px] md:top-[-30px] lg:top-[20px]
+            w-[50%] sm:w-[55%] md:w-[60%] lg:w-[55%]
+            object-contain 
+            animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105
+            z-0
+          "
+          data-animation="fade-in-right"
+          data-delay="100"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
       
       {/* CTA Section */}
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">

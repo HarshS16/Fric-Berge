@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 const OurStory = () => {
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
@@ -92,45 +94,56 @@ const OurStory = () => {
       {/* Customer Feedback */}
       <section className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
         {/* Header with decorative images */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-          <div className="space-y-2 animate-on-scroll opacity-0" data-animation="fade-in-left">
-            <h3 className="text-base md:text-lg uppercase tracking-wider text-gray-600 animate-on-scroll opacity-0" data-animation="fade-in-up">TESTIMONIALS & REVIEWS</h3>
+        <div className="flex flex-col items-center justify-center mb-4">
+          <div className="space-y-2 animate-on-scroll opacity-0 text-center">
+            <h3 className="text-base md:text-lg uppercase tracking-wider text-gray-600 animate-on-scroll opacity-0" data-animation="fade-in-up">
+              TESTIMONIALS & REVIEWS
+            </h3>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
-              Our<br />Customer<br />Feedbacks
+              Our
+              <br />
+              Customer
+              <br />
+              Feedbacks
             </h2>
           </div>
-          <div className="relative w-full md:w-1/2 max-w-[500px] h-[320px] animate-on-scroll opacity-0" data-animation="fade-in-right" data-delay="200">
+          <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-0 overflow-hidden animate-on-scroll opacity-0">
             {/* Main burger image */}
-            <img
+            {/* <img
               src="/delfood.jpg"
               alt="Delicious Burger"
               className="absolute top-0 right-0 w-[60%] md:w-[280px] h-[120px] md:h-[200px] object-cover rounded-[20px] md:rounded-[32px] z-20 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110" data-animation="fade-in-up" data-delay="300"
-            />
+            /> */}
             {/* Background sauce image */}
-            <img
+            {/* <img
               src="/food.jpg"
               alt="Sauce Background"
               className="absolute hidden md:block top-[60px] right-[390px] w-[280px] h-[200px] object-cover rounded-[32px] z-10 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110" data-animation="fade-in-up" data-delay="400"
-            />
+            /> */}
             {/* Dip image */}
-            <img
+            {/* <img
               src="/sauce.jpg"
               alt="Dipping Sauce"
               className="absolute top-[150px] md:top-[240px] right-[20px] md:right-[80px] w-[50%] md:w-[240px] h-[140px] md:h-[210px] object-cover rounded-[20px] md:rounded-[32px] z-30 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110" data-animation="fade-in-up" data-delay="500"
-            />
+            /> */}
           </div>
         </div>
 
-        {/* Testimonial Card */}
-        <div className="max-w-3xl mx-auto overflow-hidden mt-16 md:mt-36 animate-on-scroll opacity-0" data-animation="fade-zoom-in">
-          <div className="relative">
-            <div className="transition-all duration-700 ease-in-out"
-                 style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}>
-              <div className="flex">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
-                    <div className="bg-white rounded-[30px] md:rounded-[40px] p-8 md:p-12 shadow-lg animate-on-scroll opacity-0 transform transition duration-700 hover:shadow-xl hover:-translate-y-2" data-animation="fade-in-up">
-                      <div className="max-w-2xl mx-auto text-center">
+        {/* Testimonial Carousel */}
+        <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto mt-8 animate-on-scroll opacity-0" data-animation="fade-zoom-in">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index}>
+                  <div className="p-1">
+                    <Card className="bg-white rounded-[30px] md:rounded-[40px] p-8 md:p-12 shadow-lg animate-on-scroll opacity-0 transform transition duration-700 hover:shadow-xl">
+                      <CardContent className="max-w-2xl mx-auto text-center p-0">
                         <p className="text-base md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8 animate-on-scroll opacity-0" data-animation="fade-in-up">
                           "{testimonial.text}"
                         </p>
@@ -138,29 +151,16 @@ const OurStory = () => {
                           <div className="w-10 h-10 md:w-12 md:h-12 bg-black rounded-full animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110" data-animation="fade-in-up" data-delay="100"></div>
                           <h4 className="text-lg md:text-xl font-semibold animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-up" data-delay="200">{testimonial.author}</h4>
                         </div>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 border-2 border-black bg-white text-black hover:bg-gray-100" />
+            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 border-2 border-black bg-white text-black hover:bg-gray-100" />
+          </Carousel>
         </div>
-
-        {/* Slider dots */}
-        <div className="flex justify-center gap-2 mt-6 md:mt-8 animate-on-scroll opacity-0" data-animation="fade-in-up">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveTestimonial(index)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${
-                index === activeTestimonial ? 'bg-black' : 'bg-gray-300'
-              } hover:bg-gray-400`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
-
       </section>
 
       <section className="w-full">
