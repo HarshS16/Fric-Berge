@@ -2,36 +2,47 @@ import React, { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+import { motion } from "framer-motion";
 
 const OurStory = () => {
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
   const observer = useRef<IntersectionObserver | null>(null);
-  
+
   // Animation effects for scroll reveal
   useEffect(() => {
     // Create observer
-    observer.current = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Add a staggered effect for child elements
-          const delay = entry.target.getAttribute('data-delay') || '0';
-          setTimeout(() => {
-            // Choose animation based on data attribute or use default
-            const animationType = entry.target.getAttribute('data-animation') || 'fade-in-up';
-            entry.target.classList.add(`animate-${animationType}`);
-            entry.target.classList.remove('opacity-0');
-          }, parseInt(delay));
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Add a staggered effect for child elements
+            const delay = entry.target.getAttribute("data-delay") || "0";
+            setTimeout(() => {
+              // Choose animation based on data attribute or use default
+              const animationType =
+                entry.target.getAttribute("data-animation") || "fade-in-up";
+              entry.target.classList.add(`animate-${animationType}`);
+              entry.target.classList.remove("opacity-0");
+            }, parseInt(delay));
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
 
     // Observe all elements with animation classes
-    const hiddenElements = document.querySelectorAll('.animate-on-scroll');
-    hiddenElements.forEach(el => {
+    const hiddenElements = document.querySelectorAll(".animate-on-scroll");
+    hiddenElements.forEach((el) => {
       if (observer.current) {
         observer.current.observe(el);
       }
@@ -45,20 +56,20 @@ const OurStory = () => {
     };
   }, []);
 
-    const testimonials = [
-      {
-        text: "A good restaurant is like a vacation; it transports you, and it becomes a lot more than just about the food. All great deeds and all great thoughts",
-        author: "Bratlee Hamint",
-      },
-      {
-        text: "The quality is exceptional! Perfect consistency and amazing flavors. My family loves every product we've tried.",
-        author: "Michael Chen",
-      },
-      {
-        text: "Best sauces I've ever used! They're perfect for sandwiches, burgers, and even as dips. Highly recommended!",
-        author: "Emily Davis",
-      },
-    ];
+  const testimonials = [
+    {
+      text: "A good restaurant is like a vacation; it transports you, and it becomes a lot more than just about the food. All great deeds and all great thoughts",
+      author: "Bratlee Hamint",
+    },
+    {
+      text: "The quality is exceptional! Perfect consistency and amazing flavors. My family loves every product we've tried.",
+      author: "Michael Chen",
+    },
+    {
+      text: "Best sauces I've ever used! They're perfect for sandwiches, burgers, and even as dips. Highly recommended!",
+      author: "Emily Davis",
+    },
+  ];
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -67,23 +78,46 @@ const OurStory = () => {
       <section className="bg-white text-black">
         <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
           <div className="flex flex-col items-center">
-            <div className="bg-black text-white rounded-3xl px-6 md:px-12 py-8 md:py-14 shadow-xl w-full max-w-4xl text-center animate-on-scroll opacity-0" data-animation="fade-zoom-in">
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight animate-on-scroll opacity-0" data-animation="fade-in-up">Our Mission</h2>
-              <div className="mt-2 h-[3px] w-20 md:w-28 bg-white/90 rounded-full mx-auto animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100"></div>
-              <p className="mt-6 md:mt-8 text-base md:text-xl leading-relaxed max-w-3xl mx-auto font-outfit animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
-                We are dedicated to making high-quality, innovative and better-for-you dips and
-                dressings that add joy to every meal.
+            <div
+              className="bg-black text-white rounded-3xl px-6 md:px-12 py-8 md:py-14 shadow-xl w-full max-w-4xl text-center animate-on-scroll opacity-0"
+              data-animation="fade-zoom-in"
+            >
+              <h2
+                className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight animate-on-scroll opacity-0"
+                data-animation="fade-in-up"
+              >
+                Our Mission
+              </h2>
+              <div
+                className="mt-2 h-[3px] w-20 md:w-28 bg-white/90 rounded-full mx-auto animate-on-scroll opacity-0"
+                data-animation="fade-in-up"
+                data-delay="100"
+              ></div>
+              <p
+                className="mt-6 md:mt-8 text-base md:text-xl leading-relaxed max-w-3xl mx-auto font-outfit animate-on-scroll opacity-0"
+                data-animation="fade-in-up"
+                data-delay="200"
+              >
+                We are dedicated to making high-quality, innovative and
+                better-for-you dips and dressings that add joy to every meal.
               </p>
             </div>
 
-            <h1 className="mt-12 md:mt-16 text-2xl md:text-4xl lg:text-5xl font-black text-center font-outfit animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="400">
+            <h1
+              className="mt-12 md:mt-16 text-2xl md:text-4xl lg:text-5xl font-black text-center font-outfit animate-on-scroll opacity-0"
+              data-animation="fade-in-up"
+              data-delay="400"
+            >
               Hard Work Deserves Great Taste
             </h1>
           </div>
         </div>
       </section>
-      
-      <section className="w-full py-8 md:py-16 animate-on-scroll opacity-0" data-animation="fade-in-up">
+
+      <section
+        className="w-full py-8 md:py-16 animate-on-scroll opacity-0"
+        data-animation="fade-in-up"
+      >
         <img
           src="/saucescollagecanva.webp"
           alt="All Sauces Banner"
@@ -96,10 +130,17 @@ const OurStory = () => {
         {/* Header with decorative images */}
         <div className="flex flex-col items-center justify-center mb-4">
           <div className="space-y-2 animate-on-scroll opacity-0 text-center">
-            <h3 className="text-base md:text-lg uppercase tracking-wider text-gray-600 animate-on-scroll opacity-0" data-animation="fade-in-up">
+            <h3
+              className="text-base md:text-lg uppercase tracking-wider text-gray-600 animate-on-scroll opacity-0"
+              data-animation="fade-in-up"
+            >
               TESTIMONIALS & REVIEWS
             </h3>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
+            <h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight animate-on-scroll opacity-0"
+              data-animation="fade-in-up"
+              data-delay="100"
+            >
               Our
               <br />
               Customer
@@ -130,7 +171,10 @@ const OurStory = () => {
         </div>
 
         {/* Testimonial Carousel */}
-        <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto mt-8 animate-on-scroll opacity-0" data-animation="fade-zoom-in">
+        <div
+          className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto mt-8 animate-on-scroll opacity-0"
+          data-animation="fade-zoom-in"
+        >
           <Carousel
             opts={{
               align: "start",
@@ -144,12 +188,25 @@ const OurStory = () => {
                   <div className="p-1">
                     <Card className="bg-white rounded-[30px] md:rounded-[40px] p-8 md:p-12 shadow-lg animate-on-scroll opacity-0 transform transition duration-700 hover:shadow-xl">
                       <CardContent className="max-w-2xl mx-auto text-center p-0">
-                        <p className="text-base md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8 animate-on-scroll opacity-0" data-animation="fade-in-up">
+                        <p
+                          className="text-base md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8 animate-on-scroll opacity-0"
+                          data-animation="fade-in-up"
+                        >
                           "{testimonial.text}"
                         </p>
                         <div className="flex items-center justify-center gap-3 md:gap-4">
-                          <div className="w-10 h-10 md:w-12 md:h-12 bg-black rounded-full animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110" data-animation="fade-in-up" data-delay="100"></div>
-                          <h4 className="text-lg md:text-xl font-semibold animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-up" data-delay="200">{testimonial.author}</h4>
+                          <div
+                            className="w-10 h-10 md:w-12 md:h-12 bg-black rounded-full animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110"
+                            data-animation="fade-in-up"
+                            data-delay="100"
+                          ></div>
+                          <h4
+                            className="text-lg md:text-xl font-semibold animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105"
+                            data-animation="fade-in-up"
+                            data-delay="200"
+                          >
+                            {testimonial.author}
+                          </h4>
                         </div>
                       </CardContent>
                     </Card>
@@ -167,17 +224,25 @@ const OurStory = () => {
         <img
           src="/canva.webp"
           alt="Wavy Banner"
-          className="w-full h-auto object-cover block animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-up"
-          onError={(e) => { e.currentTarget.src = '/blackwave.png'; }}
+          className="w-full h-auto object-cover block animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105"
+          data-animation="fade-in-up"
+          onError={(e) => {
+            e.currentTarget.src = "/blackwave.png";
+          }}
         />
         <img
-          src="/qualities.jpg"
+          src="/bar.png"
           alt="Wavy Banner"
-          className="w-full h-auto object-cover block mb-12 md:mb-16 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105" data-animation="fade-in-up" data-delay="200"
-          onError={(e) => { e.currentTarget.src = '/blackwave.png'; }}
+          className="w-full h-auto object-cover block mb-12 md:mb-16 animate-on-scroll opacity-0 transform transition duration-700 hover:scale-105"
+          data-animation="fade-in-up"
+          data-delay="200"
+          onError={(e) => {
+            e.currentTarget.src = "/blackwave.png";
+          }}
         />
       </section>
 
+      
       <Footer />
     </div>
   );
