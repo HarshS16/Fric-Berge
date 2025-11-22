@@ -304,7 +304,7 @@ const Index = () => {
         <img
           src="/WAVYBANN.png"
           alt="Wavy Banner"
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover mb-10 lg:mb-0"
         />
       </div>
 
