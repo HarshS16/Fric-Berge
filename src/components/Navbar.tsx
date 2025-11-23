@@ -28,7 +28,7 @@ const Navbar = () => {
             FRIC BERGEN
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 bg-white/10 px-6 py-4 rounded-[32px] border border-white/20">
+          <div className="hidden md:flex items-center justify-between gap-8 bg-white/10 px-6 py-4 rounded-[32px] border border-white/20">
   {navLinks.map((link) => (
     <Link
       key={link.path}
@@ -44,14 +44,14 @@ const Navbar = () => {
   ))}
   <Link 
     to="/contact#store-locator"
-    className="ml-4 bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors"
+    className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors"
   >
     Store Locator →
   </Link>
   <a 
     href="/brochure.pdf" 
     download
-    className="ml-4 bg-green-500 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-green-600 transition-colors flex items-center gap-2"
+    className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
   >
     Download Brochure
     <Download size={16} />
@@ -91,7 +91,7 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </Button>
-              <Button asChild size="sm" className="w-full mt-2 bg-green-500 hover:bg-green-600">
+              <Button asChild size="sm" className="w-full mt-2 bg-black hover:bg-gray-900">
                 <a href="/brochure.pdf" download onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2">
                   Download Brochure
                   <Download size={16} />
