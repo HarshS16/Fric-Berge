@@ -254,13 +254,13 @@ const Products = () => {
 
               {/* SAUCE BOWL */}
               <img
-                src="/sauchnacho.png"
+                src="/fric-nacho-sauce.webp"
                 alt="Sauce bowl"
                 className="
                   absolute 
                   right-0
                   top-[-10px] sm:top-[-20px] md:top-[-30px] lg:top-[20px]
-                  w-[50%] sm:w-[55%] md:w-[60%] lg:w-[55%]
+                  w-[300%] sm:w-[55%] md:w-[60%] lg:w-[355%]
                   object-contain 
                   animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110
                   z-0

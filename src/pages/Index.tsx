@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
+import { ProductCarousel } from "@/components/ProductCarousel";
 
 const Index = () => {
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
@@ -245,7 +246,7 @@ const Index = () => {
           </h2>
           
           {/* Products Carousel */}
-          <div className="mb-12 md:mb-16 animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+          {/* <div className="mb-12 md:mb-16 animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
             <Carousel
               setApi={setCarouselApi}
               opts={{
@@ -281,7 +282,7 @@ const Index = () => {
               <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 border-2 border-black bg-white text-black hover:bg-gray-100" />
               <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 border-2 border-black bg-white text-black hover:bg-gray-100" />
             </Carousel>
-          </div>
+          </div> */}
         </div>
         
         {/* Full-width collage image as integral part of the section */}
@@ -294,28 +295,39 @@ const Index = () => {
         </div> */}
       </section>
 
-      <section className="bg-black text-white w-full animate-on-scroll opacity-0" data-animation="fade-in-up">
-        {/* Simple black background with SAUCES text */}
-        
-      </section>
+      {/* <section className="bg-black text-white w-full animate-on-scroll opacity-0" data-animation="fade-in-up">
+      
+      </section> */}
 
       {/* Wavy Banner Image */}
-      <div className="w-full -mb-20">
+      {/* <div className="w-full -mb-20">
         <img
           src="/WAVYBANN.png"
           alt="Wavy Banner"
           className="w-full h-auto object-cover mb-10 lg:mb-0"
         />
-      </div>
+      </div> */}
 
       {/* Spreads & Dips Section */}
-      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+      {/* <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black text-center leading-tight tracking-tight font-oswald text-black animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
             SPREADS
             <br />
             &amp; DIPS
           </h2>
+        </div>
+      </section> */}
+
+      {/* Circular Product Carousel */}
+      <section className="bg-white py-12 md:py-16 lg:py-24 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          {/* <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-black text-center leading-tight tracking-tight font-oswald text-black animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
+            OUR PRODUCTS
+          </h2> */}
+          <div className="mt-12 animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+            <ProductCarousel />
+          </div>
         </div>
       </section>
 

@@ -76,7 +76,7 @@ const OurStory = () => {
 
       {/* Hero Section */}
       <section className="bg-white text-black">
-        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-12">
           <div className="flex flex-col items-center">
             <div
               className="bg-black text-white rounded-3xl px-6 md:px-12 py-8 md:py-14 shadow-xl w-full max-w-4xl text-center animate-on-scroll opacity-0"
@@ -86,7 +86,7 @@ const OurStory = () => {
                 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight animate-on-scroll opacity-0"
                 data-animation="fade-in-up"
               >
-                Our Mission
+                Our Story
               </h2>
               <div
                 className="mt-2 h-[3px] w-20 md:w-28 bg-white/90 rounded-full mx-auto animate-on-scroll opacity-0"
@@ -98,22 +98,39 @@ const OurStory = () => {
                 data-animation="fade-in-up"
                 data-delay="200"
               >
-                We are dedicated to making high-quality, innovative and
-                better-for-you dips and dressings that add joy to every meal.
+                Long before Fric Bergen bottles found their way onto kitchen shelves across India, they first lived in the hearts of a small team that believed food should feel like home.
               </p>
             </div>
-
-            <h1
+          </div>
+        </div>
+      </section>
+{/* Our Story Section */}
+      <section className="bg-white py-12 md:py-16 lg:py-12 relative overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-base md:text-lg leading-relaxed text-gray-800 inline-block text-center">
+              Back in 2008, when Vivan Foods began making condiments for restaurants, they weren't thinking about scale. They were thinking about people—the chefs who trusted them, the families who would taste their food, and the memories that would be created around those meals. Every recipe was made with the quiet promise that quality shouldn't be a luxury; it should be a constant.
+              <br /><br />
+              For years, Fric Bergen lived behind the scenes, elevating dishes in cafés, bakeries, and restaurants, earning love one plate at a time. But something beautiful happened along the way: customers started asking for the same flavours at home. They didn't just want a condiment—they wanted the comfort, consistency, and care that Fric Bergen stood for.
+              <br /><br />
+              So in 2017, they decided to take a bigger step.
+              <br /><br />
+              Fric Bergen entered retail not to become a brand on a shelf, but to become a part of Indian kitchens—where laughter happens, where families gather, where every meal means something. And as homes welcomed them, Fric Bergen grew, reaching more than 60 cities across the country, carrying with them the same commitment they started with: authentic ingredients, honest flavours, and a whole lot of heart.
+              <br /><br />
+              Today, Fric Bergen isn't just a condiment brand. It's a little moment of joy. A familiar taste that makes a simple snack feel special. A dependable companion for moms who want the best, for students who live on quick meals, for food lovers who experiment, and for anyone who believes that good food brings people together.
+              <br /><br />
+              Because at Fric Bergen, every bottle still carries that original promise—made with care, shared with love.
+            </p>
+          </div>
+        </div>
+      </section>
+      <h1
               className="mt-12 md:mt-16 text-2xl md:text-4xl lg:text-5xl font-black text-center font-outfit animate-on-scroll opacity-0"
               data-animation="fade-in-up"
               data-delay="400"
             >
               Hard Work Deserves Great Taste
             </h1>
-          </div>
-        </div>
-      </section>
-
       <section
         className="w-full py-8 md:py-16 animate-on-scroll opacity-0"
         data-animation="fade-in-up"
@@ -243,9 +260,10 @@ const OurStory = () => {
       </section>
 
       
+      
+
       <Footer />
     </div>
   );
 };
-
 export default OurStory;
