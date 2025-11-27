@@ -308,7 +308,7 @@ const Index = () => {
 
       {/* Circular Product Carousel with Background Image */}
       <section
-  className="
+        className="
     relative 
     min-h-[700px] 
     md:min-h-[900px] 
@@ -317,20 +317,20 @@ const Index = () => {
     animate-on-scroll 
     opacity-0
   "
-  data-animation="fade-in-up"
->
-  {/* Background Image */}
-  <div className="absolute inset-0 w-full h-full">
-    <img
-      src="/chip.webp"
-      alt="Background"
-      className="w-full h-full object-contain md:object-cover"
-    />
-  </div>
+        data-animation="fade-in-up"
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="/chip.webp"
+            alt="Background"
+            className="w-full h-full object-contain md:object-cover"
+          />
+        </div>
 
-  <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-    <div
-      className="
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          <div
+            className="
         mt-32                 /* Increased spacing for phones */
         md:mt-48              /* Move further down on medium screens */
         lg:mt-[400px]         /* Perfect center alignment for large screens */
@@ -338,13 +338,43 @@ const Index = () => {
         animate-on-scroll 
         opacity-0
       "
-      data-animation="fade-in-up"
-      data-delay="200"
-    >
-      <ProductCarousel />
-    </div>
-  </div>
-</section>
+            data-animation="fade-in-up"
+            data-delay="200"
+          >
+            <ProductCarousel />
+          </div>
+        </div>
+      </section>
+      <section
+        className="
+    relative 
+    min-h-[700px] 
+    md:min-h-[900px] 
+    lg:min-h-[2200px]
+    overflow-hidden 
+    animate-on-scroll 
+    opacity-0
+  "
+        data-animation="fade-in-up"
+      >
+
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          <div
+            className="
+        mt-32                 /* Increased spacing for phones */
+        md:mt-48              /* Move further down on medium screens */
+        lg:mt-[400px]         /* Perfect center alignment for large screens */
+        xl:mt-[520px]         /* Adjust for very large screens */
+        animate-on-scroll 
+        opacity-0
+      "
+            data-animation="fade-in-up"
+            data-delay="200"
+          >
+            <ProductCarousel />
+          </div>
+        </div>
+      </section>
 
 
       {/* Newsletter */}
