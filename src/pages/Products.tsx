@@ -3,6 +3,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import MayoCarousel from "@/components/MayoCarousel";
+import TomatoCarousel from "@/components/TomatoCarousel";
+import SeasoningsSection from "@/components/SeasoningsSection";
 
 const Products = () => {
   const observer = useRef<IntersectionObserver | null>(null);
@@ -211,13 +214,13 @@ const Products = () => {
         <img src="/Flavours.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
-      <section aria-hidden className="bg-white w-full animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="100">
-        <div className="h-12 md:h-16 lg:h-24"></div>
-      </section>
+      <MayoCarousel />
       
-      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+      
+      
+      {/* <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
         <img src="/sauces.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
-      </section>
+      </section> */}
       
       <section className="bg-white text-black py-8 md:py-12 lg:py-20 relative overflow-visible animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
         <div className="container mx-auto px-4 lg:px-8">
@@ -274,10 +277,15 @@ const Products = () => {
       </section>
 
      
-      {/* CTA Section */}
-      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
-        <img src="/canvasauces.webp" alt="Promo Banner" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+      <TomatoCarousel />
+      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+        <img src="/Spices.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
+      <SeasoningsSection />
+      {/* CTA Section */}
+      {/* <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+        <img src="/canvasauces.webp" alt="Promo Banner" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+      </section> */}
       
       <Footer />
     </div>
