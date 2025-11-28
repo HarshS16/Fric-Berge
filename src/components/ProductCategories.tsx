@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -46,13 +47,13 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, subtitle, image }) =
 
 
 
-      <button className="flex items-center gap-2 text-white mt-2">
+      <Link to="/products" className="flex items-center gap-2 text-white mt-2">
 
         <span className="text-lg">Explore Now</span>
 
         <span className="text-xl">➜</span>
 
-      </button>
+      </Link>
 
     </div>
 
@@ -116,13 +117,13 @@ const ProductCategories: React.FC = () => {
 
           <div className="flex flex-col gap-1 md:items-start md:w-1/4">
 
-            <button className="flex items-center gap-2 text-white">
+            <Link to="/products" className="flex items-center gap-2 text-white">
 
               <span className="text-lg">Explore Now</span>
 
               <span className="text-xl">➜</span>
 
-            </button>
+            </Link>
 
           </div>
 
