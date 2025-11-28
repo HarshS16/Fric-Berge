@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 type Product = {
   id: number;
@@ -6,43 +6,64 @@ type Product = {
   image: string;
 };
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Mayonnaise Herbs & Garlic",
-    image: "/mayohg.webp",
-  },
-  {
-    id: 2,
-    name: "Tandoori Mayonnaise",
-    image: "/tanmayo.webp",
-  },
-  {
-    id: 3,
-    name: "Mayonnaise Jalapeno Cheese",
-    image: "/mayojalo.webp",
-  },
-  {
-    id: 4,
-    name: "Coriander Mint  Mayonnaise",
-    image: "/mintmayo.webp",
-  },
-  {
-    id: 5,
-    name: "Mayonnaise",
-    image: "/mayonn.webp",
-  },
+const originalProducts: Product[] = [
+  { id: 1, name: "Mayonnaise Herbs & Garlic", image: "/mayohg.webp" },
+  { id: 2, name: "Tandoori Mayonnaise", image: "/tanmayo.webp" },
+  { id: 3, name: "Mayonnaise Jalapeno Cheese", image: "/mayojalo.webp" },
+  { id: 4, name: "Coriander Mint Mayonnaise", image: "/mintmayo.webp" },
+  { id: 5, name: "Mayonnaise", image: "/mayonn.webp" },
 ];
 
-const MayoCarousel: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const ITEMS_PER_VIEW = 3;
 
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: 300,
-        behavior: "smooth",
-      });
+const MayoCarousel: React.FC = () => {
+  // Duplicate list: tail + original + head → infinite effect
+  const products = [
+    ...originalProducts.slice(-ITEMS_PER_VIEW),
+    ...originalProducts,
+    ...originalProducts.slice(0, ITEMS_PER_VIEW),
+  ];
+
+  const [index, setIndex] = useState(ITEMS_PER_VIEW);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Detect card width dynamically
+  useEffect(() => {
+    if (trackRef.current && trackRef.current.children.length > 0) {
+      const firstCard = trackRef.current.children[0] as HTMLElement;
+      setCardWidth(firstCard.offsetWidth + 24); // gap-6 = 24px
+    }
+  }, []);
+
+  // Handle infinite looping effect
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
+
+    // If we moved past the end → reset index to the original list start
+    if (index >= originalProducts.length + ITEMS_PER_VIEW) {
+      setIndex(ITEMS_PER_VIEW);
+    }
+
+    // If we moved before the start → reset index to end of original list
+    if (index < ITEMS_PER_VIEW) {
+      setIndex(originalProducts.length + ITEMS_PER_VIEW - 1);
+    }
+
+    // Re-enable smooth transitions
+    setTimeout(() => setIsTransitioning(true), 10);
+  };
+
+  const next = () => {
+    if (isTransitioning) {
+      setIndex((prev) => prev + 1);
+    }
+  };
+
+  const prev = () => {
+    if (isTransitioning) {
+      setIndex((prev) => prev - 1);
     }
   };
 
@@ -50,42 +71,64 @@ const MayoCarousel: React.FC = () => {
     <section className="w-full bg-black text-white px-6 md:px-12 py-12 space-y-8 relative">
 
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-            Mayo based
-          </h2>
-          <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-            Sauces, Spreads and Dips
-          </h3>
-        </div>
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+          Mayo based
+        </h2>
+        <h3 className="text-3xl md:text-4xl font-bold leading-tight">
+          Sauces, Spreads and Dips
+        </h3>
       </div>
 
-      {/* Arrow Button */}
-      <button
-        onClick={scrollRight}
-        className="absolute right-6 md:right-12 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full border border-white flex items-center justify-center text-2xl hover:bg-white hover:text-black transition z-10"
-      >
-        →
-      </button>
-
       {/* Carousel */}
-      <div
-        ref={scrollRef}
-        className="flex gap-10 overflow-x-auto scroll-smooth no-scrollbar py-4"
-      >
-        {products.map((product) => (
-          <div key={product.id} className="min-w-[180px] flex flex-col items-center">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-40 h-48 object-contain transition-transform duration-100 hover:scale-[1.3]"
-            />
-            <p className="text-center mt-3 font-medium leading-tight">
-              {product.name}<br />
-            </p>
+      <div className="relative flex items-center justify-center">
+
+        {/* Previous Button */}
+        <button
+          onClick={prev}
+          className="absolute left-0 z-10 w-12 h-12 rounded-full border-2 border-white text-white flex items-center justify-center text-xl hover:bg-white hover:text-black transition"
+        >
+          ←
+        </button>
+
+        {/* Track wrapper */}
+        <div className="overflow-hidden w-full px-20">
+          <div
+            ref={trackRef}
+            className="flex gap-6"
+            style={{
+              transform: `translateX(-${index * cardWidth}px)`,
+              transition: isTransitioning
+                ? "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)"
+                : "none",
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {products.map((product, i) => (
+              <div
+                key={`${product.id}-${i}`}
+                className="min-w-[260px] flex flex-col items-center flex-shrink-0"
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-40 h-48 object-contain transition-transform duration-150 hover:scale-[1.15]"
+                />
+                <p className="text-center mt-3 font-medium leading-tight text-sm">
+                  {product.name}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Next Button */}
+        <button
+          onClick={next}
+          className="absolute right-0 z-10 w-12 h-12 rounded-full border-2 border-white text-white flex items-center justify-center text-xl hover:bg-white hover:text-black transition"
+        >
+          →
+        </button>
       </div>
 
     </section>
