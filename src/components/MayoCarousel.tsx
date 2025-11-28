@@ -69,9 +69,27 @@ const MayoCarousel: React.FC = () => {
 
   return (
     <section className="w-full bg-black text-white px-6 md:px-12 py-12 space-y-8 relative">
+      <style>
+        {`
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(40px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+          }
+        `}
+      </style>
 
       {/* Header */}
-      <div>
+      <div className="animate-fade-in-up">
         <h2 className="text-3xl md:text-4xl font-bold leading-tight">
           Mayo based
         </h2>
@@ -81,7 +99,7 @@ const MayoCarousel: React.FC = () => {
       </div>
 
       {/* Carousel */}
-      <div className="relative flex items-center justify-center">
+      <div className="relative flex items-center justify-center animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
 
         {/* Previous Button */}
         <button
