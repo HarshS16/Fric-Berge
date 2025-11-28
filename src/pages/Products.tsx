@@ -10,6 +10,29 @@ import SeasoningsSection from "@/components/SeasoningsSection";
 const Products = () => {
   const observer = useRef<IntersectionObserver | null>(null);
   
+  // Scroll to section on hash change
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    // Trigger on component mount and when hash changes
+    handleHashScroll();
+    window.addEventListener('hashchange', handleHashScroll);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll);
+    };
+  }, []);
+  
   // Animation effects for scroll reveal
   useEffect(() => {
     // Create observer
@@ -214,7 +237,9 @@ const Products = () => {
         <img src="/Flavours.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
-      <MayoCarousel />
+      <section id="mayonnaise">
+        <MayoCarousel />
+      </section>
       
       
       
@@ -277,11 +302,15 @@ const Products = () => {
       </section>
 
      
-      <TomatoCarousel />
+      <section id="sauces">
+        <TomatoCarousel />
+      </section>
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
         <img src="/Spices.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
-      <SeasoningsSection />
+      <section id="seasonings">
+        <SeasoningsSection />
+      </section>
       {/* CTA Section */}
       {/* <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
         <img src="/canvasauces.webp" alt="Promo Banner" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />

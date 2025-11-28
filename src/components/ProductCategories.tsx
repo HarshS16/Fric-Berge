@@ -10,12 +10,14 @@ type CategoryCardProps = {
   subtitle?: string;
 
   image: string;
+  
+  link?: string;
 
 };
 
 
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ title, subtitle, image }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ title, subtitle, image, link = "/products" }) => {
 
   return (
 
@@ -47,7 +49,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, subtitle, image }) =
 
 
 
-      <Link to="/products" className="flex items-center gap-2 text-white mt-2">
+      <Link to={link} className="flex items-center gap-2 text-white mt-2">
 
         <span className="text-lg">Explore Now</span>
 
@@ -82,6 +84,8 @@ const ProductCategories: React.FC = () => {
           subtitle="Sauces, Spreads & Dips"
 
           image="/whitemayo.webp"
+          
+          link="/products#mayonnaise"
 
         />
 
@@ -94,6 +98,8 @@ const ProductCategories: React.FC = () => {
           subtitle="Sauces, Spreads & Dips"
 
           image="/pizzasauce.webp"
+          
+          link="/products#sauces"
 
         />
 
@@ -117,7 +123,7 @@ const ProductCategories: React.FC = () => {
 
           <div className="flex flex-col gap-1 md:items-start md:w-1/4">
 
-            <Link to="/products" className="flex items-center gap-2 text-white">
+            <Link to="/products#seasonings" className="flex items-center gap-2 text-white">
 
               <span className="text-lg">Explore Now</span>
 
