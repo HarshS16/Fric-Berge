@@ -306,7 +306,7 @@ const Products = () => {
         <TomatoCarousel />
       </section>
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
-        <img src="/Spices.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+        <img src="/2.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       <section id="seasonings">
         <SeasoningsSection />
