@@ -23,10 +23,20 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
+            className="flex items-center"
+          >
+            <img 
+              src="/logo.svg" 
+              alt="FRIC Bergen Logo" 
+              className="h-20 lg:h-28 w-auto"
+            />
+          </Link>
+          {/* <Link
+            to="/"
             className="text-2xl lg:text-3xl font-bold tracking-tight"
           >
             FRIC BERGEN
-          </Link>
+          </Link> */}
 
           <div className="hidden md:flex items-center justify-between gap-8 bg-white/10 px-6 py-4 rounded-[32px] border border-white/20">
   {navLinks.map((link) => (
