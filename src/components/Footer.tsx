@@ -85,7 +85,7 @@ const Footer = () => {
               <h4 className="text-lg font-bold mb-4">Contact Us</h4>
               <ul className="space-y-2 text-sm text-primary-foreground/80">
                 <li>Email: info@fricbergen.com</li>
-                <li>Phone: +1 (555) 123-4567</li>
+                <li>Phone:0124-4076305</li>
                 <li className="max-w-[200px]">Address: G1-13, R. I. I. C. O. Industrial Area, Sotanala, Alwar, Rajasthan -India</li>
               </ul>
             </div>
