@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-background sticky top-0 z-50">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-4">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <Link
@@ -28,7 +28,7 @@ const Navbar = () => {
             <img 
               src="/logo.svg" 
               alt="FRIC Bergen Logo" 
-              className="h-20 lg:h-28 w-auto"
+              className="h-20 lg:h-40 w-auto"
             />
           </Link>
           {/* <Link

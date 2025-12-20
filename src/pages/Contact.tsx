@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import { Search } from "lucide-react";
 
 const Contact = () => {
   const observer = useRef<IntersectionObserver | null>(null);
+  const [showModal, setShowModal] = useState(false);
   
   // Animation effects for scroll reveal
   useEffect(() => {
@@ -50,9 +51,38 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thank you! We'll get back to you soon.");
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // Convert FormData to JSON for better compatibility
+    const formObject: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      formObject[key] = value.toString();
+    });
+    
+    try {
+      const response = await fetch('https://submit-form.com/54CBsxOYq', {
+        method: 'POST',
+        body: JSON.stringify(formObject),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      });
+      
+      if (response.ok) {
+        setShowModal(true);
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error("Network error. Please try again.");
+    }
   };
 
   return (
@@ -78,7 +108,7 @@ const Contact = () => {
         </h2>
 
         <form
-          method="POST"
+          onSubmit={handleSubmit}
           className="max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto bg-black text-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-on-scroll opacity-0 transform transition duration-700 hover:shadow-xl" data-animation="fade-in-up" data-delay="100"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
@@ -123,6 +153,23 @@ const Contact = () => {
             </button>
           </div>
         </form>
+
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full mx-4 text-center animate-on-scroll">
+            <div className="text-green-500 text-5xl mb-4">✓</div>
+            <h3 className="text-2xl font-bold mb-2 text-gray-800">Message Sent!</h3>
+            <p className="text-gray-600 mb-6">Thank you for contacting us. We'll get back to you soon.</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       </section>
 
       <Footer />
