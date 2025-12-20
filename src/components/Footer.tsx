@@ -84,9 +84,9 @@ const Footer = () => {
             <div className="flex flex-col items-start sm:items-start">
               <h4 className="text-lg font-bold mb-4">Contact Us</h4>
               <ul className="space-y-2 text-sm text-primary-foreground/80">
-                <li>Email: info@fricbergen.com</li>
+                <li>Email: sales@fricbergen.com</li>
                 <li>Phone:0124-4076305</li>
-                <li className="max-w-[200px]">Address: G1-13, R. I. I. C. O. Industrial Area, Sotanala, Alwar, Rajasthan -India</li>
+                <li className="max-w-[200px]"> G1-13, R. I. I. C. O. Industrial Area, Sotanala, Behror - 301701, Rajasthan - India</li>
               </ul>
             </div>
           </div>
