@@ -234,73 +234,22 @@ const Products = () => {
       
       {/* Hero Section - full-bleed image */}
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
-        <img src="/Flavours.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+        <img src="/Fric Bergen - PRODUCT PAGE HERO BANNER.png" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
       <section id="mayonnaise">
         <MayoCarousel />
       </section>
       
-      
+      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+        <img src="/Product Page - Bold Flavours Banner - Fric Bergen.png" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+      </section>
       
       {/* <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
         <img src="/sauces.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section> */}
       
-      <section className="bg-white text-black py-8 md:py-12 lg:py-20 relative overflow-visible animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="300">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4 animate-on-scroll opacity-0" data-animation="fade-in-left" data-delay="100">
-              <h2 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[0.95] animate-on-scroll opacity-0" data-animation="fade-in-left">
-                Bold<br />
-                Flavours.<br />
-                Smooth<br />
-                Finish.
-              </h2>
-            </div>
-
-            <div className="relative w-full lg:h-[550px] animate-on-scroll opacity-0" data-animation="fade-in-right" data-delay="200">
-              {/* Image container */}
-              <div className="relative lg:absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-start gap-8 lg:gap-0 lg:pl-8">
-                {/* JAR IMAGE */}
-                <img
-                  src="/ppnew.webp"
-                  alt="Pizza & Pasta Sauce jar"
-                  className="
-                    w-[55%] sm:w-[50%] md:w-[45%] lg:w-[45%]
-                    object-contain
-                    animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110
-                    z-10
-                    mr-auto
-                    -translate-x-6 sm:-translate-x-10 md:-translate-x-16 lg:-translate-x-20
-                    mt-6
-                  "
-                  data-animation="fade-in-right"
-                  data-delay="300"
-                />
-              </div>
-
-              {/* SAUCE BOWL */}
-              <img
-                src="/fric-nacho-sauce.webp"
-                alt="Sauce bowl"
-                className="
-                  absolute 
-                  right-0
-                  top-[-10px] sm:top-[-20px] md:top-[-30px] lg:top-[20px]
-                  w-[300%] sm:w-[55%] md:w-[60%] lg:w-[355%]
-                  object-contain 
-                  animate-on-scroll opacity-0 transform transition duration-700 hover:scale-110
-                  z-0
-                "
-                data-animation="fade-in-right"
-                data-delay="400"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+    
      
       <section id="sauces">
         <TomatoCarousel />

@@ -64,16 +64,28 @@ const Index = () => {
 
   const testimonials = [
     {
-      text: "A good restaurant is like a vacation; it transports you, and it becomes a lot more than just about the food. All great deeds and all great thoughts",
-      author: "Bratlee Hamint",
+      text: "The sauces taste incredibly fresh and balanced. You can tell they're made with real ingredients, not shortcuts. Fric Bergen has become a staple in my kitchen.",
+      author: "Rohan Mehta, Mumbai",
     },
     {
-      text: "The quality is exceptional! Perfect consistency and amazing flavors. My family loves every product we've tried.",
-      author: "Michael Chen",
+      text: "I tried the dips for a small house party and everyone kept asking where they were from. Creamy, flavourful, and not overpowering. Perfect with snacks.",
+      author: "Ananya Sharma, Delhi",
     },
     {
-      text: "Best sauces I've ever used! They're perfect for sandwiches, burgers, and even as dips. Highly recommended!",
-      author: "Emily Davis",
+      text: "Finally found sauces that complement Indian food instead of masking it. Whether it's sandwiches or quick stir-fries, Fric Bergen just fits in naturally.",
+      author: "Kunal Bansal, Gurugram",
+    },
+    {
+      text: "The quality really stands out. You don't need a lot to get great flavour, which says a lot about how well the products are made.",
+      author: "Pooja Malhotra, Chandigarh",
+    },
+    {
+      text: "Their dips have become a weekend ritual at home. Easy to serve, great taste, and loved by both kids and adults.",
+      author: "Shweta Kulkarni, Pune",
+    },
+    {
+      text: "You can genuinely taste the craftsmanship in these products. Fric Bergen feels premium without being pretentious.",
+      author: "Aman Khanna, Noida",
     },
   ];
 

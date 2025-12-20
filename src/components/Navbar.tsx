@@ -52,12 +52,12 @@ const Navbar = () => {
       {link.name}
     </Link>
   ))}
-  <Link 
+  {/* <Link 
     to="/contact#store-locator"
     className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors"
   >
     Store Locator →
-  </Link>
+  </Link> */}
   <a 
     href="/brochure.pdf" 
     download
