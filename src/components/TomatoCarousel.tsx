@@ -159,12 +159,20 @@ type Product = {
 };
 
 const originalProducts: Product[] = [
-  { id: 1, name: "Pizza & Pasta Sauce", image: "/pizzasauce.webp" },
-  { id: 2, name: "Schezwan Sauce", image: "/schezwan.webp" },
-  { id: 3, name: "Hot Kimchi Sauce", image: "/kimchi.webp" },
-  { id: 4, name: "Salsa Dip", image: "/salsadip.webp" },
-  { id: 5, name: "Garlic Chilli Sauce", image: "/garlicchilli.webp" },
+  { id: 1, name: "Pizza & Pasta Sauce ( Cheesy Tomato)", image: "/PizzaPasta(Cheesy Tomato).png" },
+  { id: 2, name: "Schezwan Sauce", image: "/Shezwan.png" },
+  { id: 3, name: "Hot Kimchi Sauce", image: "/HotKimchi.png" },
+  { id: 4, name: "Salsa Dip", image: "/SALSA(Chunky Tomato).png" },
+  { id: 5, name: "Garlic Chilli Sauce", image: "/GarlicChilli.png" },
+  { id: 6, name: "Mustard Sauce", image: "/Mustard.png" },
+  { id: 7, name: "Tomato Ketchup", image: "/TomatoKetchup.png" },
+  { id: 8, name: "Tomato Ketchup", image: "/TomatoKetchup.png" },
+  { id: 9, name: "Chowmein & Fried Rice Sauce", image: "/Chowmein&FriedRice.png" },
+  { id: 10, name: "Pizza & Pasta Sauce ( Classic Marinara)", image: "/PizzaPasta(Classic Marinara).png" },
 ];
+
+
+
 
 const ITEMS_PER_VIEW = 3;
 
