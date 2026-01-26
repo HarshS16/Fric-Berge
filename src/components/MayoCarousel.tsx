@@ -7,12 +7,15 @@ type Product = {
 };
 
 const originalProducts: Product[] = [
-  { id: 1, name: "Mayonnaise Herbs & Garlic", image: "/mayohg.webp" },
-  { id: 2, name: "Tandoori Mayonnaise", image: "/tanmayo.webp" },
-  { id: 3, name: "Mayonnaise Jalapeno Cheese", image: "/mayojalo.webp" },
-  { id: 4, name: "Coriander Mint Mayonnaise", image: "/mintmayo.webp" },
-  { id: 5, name: "Mayonnaise", image: "/mayonn.webp" },
+  { id: 1, name: "Mayonnaise Herbs & Garlic", image: "/Herbs&Garlic.png" },
+  { id: 2, name: "Tandoori Mayonnaise", image: "/Tandoori.png" },
+  { id: 3, name: "Mayonnaise Jalapeno Cheese", image: "/CheesyDip(Jalapeno).png" },
+  { id: 4, name: "Coriander Mint Mayonnaise", image: "/KebabDip(Mint).png" },
+  { id: 5, name: "Pure Veg Mayonnaise", image: "/PureVeg.png" },
+  { id: 6, name: "Tangy Cucumber Mayonnaise", image: "/TangyCucumber.png" }
+
 ];
+
 
 const ITEMS_PER_VIEW = 3;
 
@@ -77,7 +80,7 @@ const MayoCarousel: React.FC = () => {
         </button>
 
         {/* Track Wrapper */}
-        <div className="overflow-hidden w-full">
+        <div className="overflow-hidden w-full py-20">
           <div
             ref={trackRef}
             className="flex gap-6"
@@ -92,12 +95,12 @@ const MayoCarousel: React.FC = () => {
             {products.map((product, i) => (
               <div
                 key={`${product.id}-${i}`}
-                className="min-w-[260px] flex flex-col items-center flex-shrink-0"
+                className="min-w-[260px] flex flex-col items-center flex-shrink-0 relative hover:z-50"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-40 h-48 object-contain transition-transform duration-150 hover:scale-[1.15]"
+                  className="w-40 h-48 object-contain transition-transform duration-450 hover:scale-[1.5]"
                 />
                 <p className="text-center mt-4 font-medium leading-tight text-sm">
                   {product.name}

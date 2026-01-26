@@ -56,20 +56,41 @@ const OurStory = () => {
     };
   }, []);
 
-  const testimonials = [
-    {
-      text: "A good restaurant is like a vacation; it transports you, and it becomes a lot more than just about the food. All great deeds and all great thoughts",
-      author: "Bratlee Hamint",
-    },
-    {
-      text: "The quality is exceptional! Perfect consistency and amazing flavors. My family loves every product we've tried.",
-      author: "Michael Chen",
-    },
-    {
-      text: "Best sauces I've ever used! They're perfect for sandwiches, burgers, and even as dips. Highly recommended!",
-      author: "Emily Davis",
-    },
-  ];
+ const testimonials = [
+  {
+    text: "I discovered Fric Bergen products at a local shop in Delhi and instantly became a fan. The flavours are incredible, especially the tandoori mayo.",
+    author: "Roopa S., Delhi",
+  },
+  {
+    text: "Fric Bergen’s tandoori mayo completely stands out. Rich, bold, and better than any other brand I’ve tried so far.",
+    author: "Amit Khanna, Gurugram",
+  },
+  {
+    text: "After trying Fric Bergen sauces, I started recommending them to friends immediately. Everyone loved the taste and quality.",
+    author: "Neha Verma, Noida",
+  },
+  {
+    text: "I’ve tried Fric Bergen mayonnaise and peanut butter, and both are absolutely amazing. The flavours are perfectly balanced and premium.",
+    author: "Shraddha Dash, Bengaluru",
+  },
+  {
+    text: "The cheese jalapeño dip from Fric Bergen is outstanding. It instantly became a household favourite.",
+    author: "Rahul Mehta, Mumbai",
+  },
+  {
+    text: "Fric Bergen products have a very distinctive taste. You can clearly feel the quality in every bite.",
+    author: "Pooja Malhotra, Chandigarh",
+  },
+  {
+    text: "I first tasted Fric Bergen jams during a stay at a premium hotel and they left a lasting impression.",
+    author: "Samridhi Madan, Faridabad",
+  },
+  {
+    text: "Once you try Fric Bergen jams, you actively start looking for them everywhere. The taste genuinely stands out.",
+    author: "Vikas Arora, Jaipur",
+  },
+];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

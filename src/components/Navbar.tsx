@@ -28,7 +28,7 @@ const Navbar = () => {
             <img 
               src="/logo.svg" 
               alt="FRIC Bergen Logo" 
-              className="h-20 lg:h-40 w-auto"
+              className="h-14 lg:h-28 w-auto"
             />
           </Link>
           {/* <Link
@@ -59,7 +59,7 @@ const Navbar = () => {
     Store Locator →
   </Link> */}
   <a 
-    href="/brochure.pdf" 
+    href="/Brochure.pdf" 
     download
     className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
   >

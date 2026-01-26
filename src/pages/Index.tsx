@@ -63,31 +63,39 @@ const Index = () => {
   }, []);
 
   const testimonials = [
-    {
-      text: "The sauces taste incredibly fresh and balanced. You can tell they're made with real ingredients, not shortcuts. Fric Bergen has become a staple in my kitchen.",
-      author: "Rohan Mehta, Mumbai",
-    },
-    {
-      text: "I tried the dips for a small house party and everyone kept asking where they were from. Creamy, flavourful, and not overpowering. Perfect with snacks.",
-      author: "Ananya Sharma, Delhi",
-    },
-    {
-      text: "Finally found sauces that complement Indian food instead of masking it. Whether it's sandwiches or quick stir-fries, Fric Bergen just fits in naturally.",
-      author: "Kunal Bansal, Gurugram",
-    },
-    {
-      text: "The quality really stands out. You don't need a lot to get great flavour, which says a lot about how well the products are made.",
-      author: "Pooja Malhotra, Chandigarh",
-    },
-    {
-      text: "Their dips have become a weekend ritual at home. Easy to serve, great taste, and loved by both kids and adults.",
-      author: "Shweta Kulkarni, Pune",
-    },
-    {
-      text: "You can genuinely taste the craftsmanship in these products. Fric Bergen feels premium without being pretentious.",
-      author: "Aman Khanna, Noida",
-    },
-  ];
+  {
+    text: "I discovered Fric Bergen products at a local shop in Delhi and instantly became a fan. The flavours are incredible, especially the tandoori mayo.",
+    author: "Roopa S., Delhi",
+  },
+  {
+    text: "Fric Bergen’s tandoori mayo completely stands out. Rich, bold, and better than any other brand I’ve tried so far.",
+    author: "Amit Khanna, Gurugram",
+  },
+  {
+    text: "After trying Fric Bergen sauces, I started recommending them to friends immediately. Everyone loved the taste and quality.",
+    author: "Neha Verma, Noida",
+  },
+  {
+    text: "I’ve tried Fric Bergen mayonnaise and peanut butter, and both are absolutely amazing. The flavours are perfectly balanced and premium.",
+    author: "Shraddha Dash, Bengaluru",
+  },
+  {
+    text: "The cheese jalapeño dip from Fric Bergen is outstanding. It instantly became a household favourite.",
+    author: "Rahul Mehta, Mumbai",
+  },
+  {
+    text: "Fric Bergen products have a very distinctive taste. You can clearly feel the quality in every bite.",
+    author: "Pooja Malhotra, Chandigarh",
+  },
+  {
+    text: "I first tasted Fric Bergen jams during a stay at a premium hotel and they left a lasting impression.",
+    author: "Samridhi Madan, Faridabad",
+  },
+  {
+    text: "Once you try Fric Bergen jams, you actively start looking for them everywhere. The taste genuinely stands out.",
+    author: "Vikas Arora, Jaipur",
+  },
+];
 
   const products = [
     { id: 1, name: "Sandwich Spread", image: "/sandwich-spread.png" },
