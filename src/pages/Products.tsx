@@ -234,7 +234,7 @@ const Products = () => {
       
       {/* Hero Section - full-bleed image */}
       <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
-        <img src="/Fric Bergen - PRODUCT PAGE HERO BANNER.png" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
+        <img src="/herobanner.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
       <section id="mayonnaise">
