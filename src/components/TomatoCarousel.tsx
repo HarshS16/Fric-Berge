@@ -174,7 +174,7 @@ const originalProducts: Product[] = [
 
 
 
-const ITEMS_PER_VIEW = 3;
+const ITEMS_PER_VIEW = 4;
 
 const TomatoCarousel: React.FC = () => {
   const products = [
@@ -191,7 +191,7 @@ const TomatoCarousel: React.FC = () => {
   useEffect(() => {
     if (trackRef.current && trackRef.current.children.length > 0) {
       const firstCard = trackRef.current.children[0] as HTMLElement;
-      setCardWidth(firstCard.offsetWidth + 24); // gap-6
+      setCardWidth(firstCard.offsetWidth + 32 + 1); // gap-8 + buffer
     }
   }, []);
 
@@ -238,7 +238,7 @@ const TomatoCarousel: React.FC = () => {
         <div className="overflow-hidden w-full px-16 md:px-20 py-20">
           <div
             ref={trackRef}
-            className="flex gap-6"
+            className="flex gap-8"
             style={{
               transform: `translateX(-${index * cardWidth}px)`,
               transition: isTransitioning
@@ -250,14 +250,14 @@ const TomatoCarousel: React.FC = () => {
             {products.map((product, i) => (
               <div
                 key={`${product.id}-${i}`}
-                className="min-w-[240px] flex flex-col items-center flex-shrink-0 relative hover:z-50"
+                className="min-w-[calc(25%-24px)] w-[calc(25%-24px)] flex flex-col items-center flex-shrink-0 relative hover:z-50"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-40 h-48 object-contain transition-transform duration-450 hover:scale-[1.5]"
+                  className="w-72 h-80 object-contain transition-transform duration-450 hover:scale-[1.4]"
                 />
-                <p className="text-center mt-4 font-medium leading-tight text-sm">
+                <p className="text-center mt-5 font-semibold leading-tight text-lg">
                   {product.name}
                 </p>
               </div>
