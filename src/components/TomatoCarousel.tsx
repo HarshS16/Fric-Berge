@@ -235,7 +235,7 @@ const TomatoCarousel: React.FC = () => {
         </button>
 
         {/* Track Wrapper */}
-        <div className="overflow-hidden w-full px-16 md:px-20 py-20">
+        <div className="overflow-hidden w-full py-20">
           <div
             ref={trackRef}
             className="flex gap-8"
