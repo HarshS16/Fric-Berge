@@ -233,7 +233,7 @@ const Products = () => {
       </style>
       
       {/* Hero Section - full-bleed image */}
-      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-zoom-in">
         <img src="/herobanner.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
@@ -241,7 +241,7 @@ const Products = () => {
         <MayoCarousel />
       </section>
       
-      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up">
+      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-zoom-in" data-delay="100">
         <img src="/banner-products.png" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       
@@ -254,7 +254,7 @@ const Products = () => {
       <section id="sauces">
         <TomatoCarousel />
       </section>
-      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-in-up" data-delay="200">
+      <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-zoom-in" data-delay="100">
         <img src="/2.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
       <section id="seasonings">

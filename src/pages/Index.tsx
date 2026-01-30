@@ -133,7 +133,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 lg:py-20">
+      {/* <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 lg:py-20">
         <div className="flex flex-col md:flex-row gap-12 sm:gap-20 md:gap-24 items-center justify-center">
           <div
             className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm animate-on-scroll opacity-0"
@@ -158,6 +158,9 @@ const Index = () => {
             />
           </div>
         </div>
+      </section> */}
+     <section className="relative bg-black w-full overflow-hidden animate-on-scroll opacity-0" data-animation="fade-zoom-in">
+        <img src="/herobannerlatest.webp" alt="Hero" className="w-full h-auto object-cover block transform transition duration-1000 hover:scale-105" />
       </section>
 
       {/* Add these keyframes to your global CSS or tailwind.config.js */}
